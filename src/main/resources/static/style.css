@@ -1,0 +1,553 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+}
+
+/* header {
+    background-color: #030013;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.company-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.logo img {
+    height: 50px;
+} */
+
+
+
+/* General Navbar Styles */
+header {
+    /* background-color: #030013; */
+    background-color: #06021f;
+    color: white;
+    padding: 10px 20px;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.company-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.company-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+.video video{
+    width: 100%;
+     height: 777px;
+      display: block
+}
+
+/* Hamburger Button or three line */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: white;
+    cursor: pointer;
+}
+
+/* Media Queries for Responsiveness */
+/* @media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #030013;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        padding: 10px 20px;
+        z-index: 10;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    .company-name {
+        font-size: 1.2rem;
+    }
+} */
+/* end for tab */
+
+.video {
+    opacity: 0.9;
+}
+
+section {
+    padding: 20px;
+    text-align: center;
+}
+
+#home {
+    background-color: #f9f9f9;
+}
+
+#home .section {
+    margin-bottom: 30px;
+}
+
+#home .section h2 {
+    color: #21055a;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+#home .section p {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+}
+
+#home .section .content {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+#home .section .content img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 5%;
+}
+
+#home .section .content p {
+    width: 100%;
+    max-width: 500px;
+    font-size: 16px;
+    text-align: start;
+}
+
+#home .section .content-2 {
+    text-align: left;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+#home .section .content-2 li {
+    padding: 12px;
+    color: #555;
+}
+
+#domain{
+    background-color: #f9f9f9;
+    color: #21055a;
+    /* padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px; */
+}
+#domain h2{
+    margin-right: 20px;
+}
+
+/* CSs for card in domain sec */
+.carousel-container {
+    position: relative;
+    width: 80%;
+    max-width: 1200px;
+    overflow: hidden;
+    margin: 150px;
+
+}
+
+.carousel {
+    display: flex;
+    gap: 20px;
+    height: 300px;
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(0);
+}
+
+.card {
+    flex: 0 0 30%;
+    max-width: 30%;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.card img {
+    width: 80%;
+    border-radius: 10px;
+    /* width: 180px; */
+    height:  200px;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.left-btn {
+    left: 10px;
+}
+
+.right-btn {
+    right: 10px;
+}
+
+.carousel-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+/* Submit from internship */
+#apply {
+    background-color: #ffffff;
+    padding: 20px;
+
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+#apply h2 {
+    color: #21055a;
+    margin-bottom: 10px;
+}
+
+#apply p {
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.form_cards .card_1 img{
+    width: 400px;
+    height: 270px;
+    border-radius: 5%;
+}
+.form_cards .card_2 img{
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
+}
+.form_cards .card_2 img:hover{
+    width: 270px;
+    height: 270px;
+}
+
+/*
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    text-align: left;
+    margin-left: 180px;
+    margin-right: 180px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #21055a;
+}
+
+button {
+    background-color: #21055a;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #15023b;
+} */
+
+
+footer {
+    background-color: #06021f;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    /* margin-top: 20px; */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Media Queries for Responsiveness */
+
+/* For tablets and smaller screens */
+
+
+@media (max-width: 768px) {
+    /* Navbar adjustments */
+    .navbar-container {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background-color: #06021f;
+        padding: 10px 20px;
+        position: absolute;
+        top: 60px;
+        width: 100%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        z-index: 1;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    /* Video resizing */
+    .video video {
+        height: 500px;
+    }
+
+    /* Home section adjustments */
+    #home .section {
+        padding: 10px;
+    }
+
+    #home .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #home .content img {
+        max-width: 80%;
+        margin-bottom: 10px;
+    }
+
+    #home .content p {
+        text-align: center;
+    }
+
+    #home .content-2 {
+        padding: 10px;
+    }
+
+    /* Domain Carousel */
+    .carousel-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .card {
+        flex: 0 0 40%;
+        max-width: 40%;
+    }
+
+   
+
+    /* Apply Section */
+    #apply {
+        padding: 20px;
+        /* margin: 20px 10px; */
+    }
+
+    .form-group {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+/* For mobile devices */
+@media (max-width: 480px) {
+    /* Navbar adjustments */
+    .navbar-container {
+        flex-direction: row;
+        align-items: flex-start;
+
+    }
+
+    .company-name {
+        font-size: 1.2rem;
+    }
+
+    .nav-links a {
+        font-size: 0.8rem;
+        padding: 5px 0;
+    }
+
+    /* Video adjustments */
+    .video video {
+        height: 650px;
+    }
+
+    /* Home Section */
+    #home .section h2 {
+        font-size: 1.2rem;
+    }
+
+    #home .content img {
+        max-width: 100%;
+    }
+
+    #home .content p {
+        font-size: 0.9rem;
+    }
+
+    /* Domain Carousel */
+    .card {
+        flex: 0 0 60%;
+        max-width: 60%;
+    }
+
+    .carousel {
+        gap: 10px;
+    }
+    .carousel-container {
+        width: 100%;
+        padding: 10px;
+        position: relative;
+        width: 78%;
+        max-width: 1200px;
+        overflow: hidden;
+        margin: 23px;
+    }
+    .card img {
+        width: 100%;
+        border-radius: 10px;
+        /* width: 180px; */
+        height: 140px;
+    }
+    /* Apply Section */
+    #apply {
+        padding: 15px;
+        /* margin: 10px 5px; */
+    }
+
+    .form-group {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    label {
+        font-size: 0.9rem;
+    }
+
+    input, select, button {
+        
+        font-size: 0.9rem;
+    }
+
+    .form_cards .card_1 img{
+        width: 270px;
+        height: 250px;
+        border-radius: 4%
+    }
+    .form_cards .card_2 img{
+        width: 242px;
+        height: 249px;
+        cursor: pointer;
+    }
+    .form_cards .card_2 img:hover{
+        width: 270px;
+        height: 270px;
+    }
+    /* Footer */
+    footer {
+        font-size: 0.8rem;
+    }
+}

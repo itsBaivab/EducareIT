@@ -2244,9 +2244,8 @@
             <h4 style="color: rgba(72, 255, 0, 0.867);">${SucMsg}</h4>
            </c:if>
            
-           
     <c:if test="${not empty FailMsg}">
-        <h4 style="color: rgb(250, 82, 82);">${FailMsg}</h4>
+        <h4 style="color: rgb(255, 0, 0);">${FailMsg}</h4>
        </c:if>
         <form  action="addinfo" method="POST"  id="internship-form">
             <div class="form-group">

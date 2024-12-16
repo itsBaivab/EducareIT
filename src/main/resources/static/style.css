@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #000000;
+    background-color: #ffffff;
 }
 
 /* header {
@@ -45,7 +45,7 @@ nav a:hover {
 /* General Navbar Styles */
 header {
     /* background-color: #030013; */
-    background-color: #06021f;
+    background-color: #be2bbe;
     color: white;
     padding: 10px 20px;
 }
@@ -137,6 +137,38 @@ header {
     opacity: 0.9;
 }
 
+/* 1st welcome section */
+.first_details{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-left: 760px;
+    /* margin-bottom: 147px; */
+    margin-top: -400px;
+}
+.firstSec img{
+    width: 100%;
+    height: 80vh;
+}
+.firstSec h2{
+  
+    font-size: 40px;
+    color: #6e006e;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+ .button{
+    font-size: 18px;
+    background-color: #be2bbe;
+    width: 170px;
+    height: 35px;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* home sec */
 section {
     padding: 20px;
     text-align: center;
@@ -151,7 +183,7 @@ section {
 }
 
 #home .section h2 {
-    color: #21055a;
+    color: #6e006e;
     margin-bottom: 10px;
     text-align: left;
 }
@@ -196,9 +228,10 @@ section {
     color: #555;
 }
 
+/* domain sec */
 #domain{
-    background-color: #f9f9f9;
-    color: #21055a;
+    background-color: #ffcdf3d8;
+    color: #6e006e;
     /* padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -213,18 +246,19 @@ section {
     position: relative;
     width: 80%;
     max-width: 1200px;
-    overflow: hidden;
-    margin: 150px;
+    /* overflow: hidden; */
+    margin: 200px;
 
 }
 
 .carousel {
     display: flex;
-    gap: 20px;
-    height: 300px;
-    transition: transform 0.5s ease-in-out;
-    transform: translateX(0);
-}
+        gap: 20px;
+        height: 1200px;
+        transition: transform 0.5s ease-in-out;
+        transform: translateX(0);
+        flex-wrap: wrap;
+    }
 
 .card {
     flex: 0 0 30%;
@@ -236,7 +270,10 @@ section {
     padding: 10px;
     overflow: hidden;
 }
-
+.card p{
+    text-align: start;
+    color: #555;
+}
 .card img {
     width: 80%;
     border-radius: 10px;
@@ -354,6 +391,30 @@ button:hover {
 } */
 
 
+/* Course sec */
+#course {
+    background-color: rgb(255, 222, 222);
+   
+}
+.course-body p{
+    padding: 50px;
+    font-size: 30px;
+    margin-left: 20px;
+    color: #6e006e;
+
+}
+.course-top p{
+
+    font-size: 10px;
+}
+.course-top h2{
+    color: #6e006e;
+
+  
+}
+
+
+/* footer sec */
 footer {
     background-color: #06021f;
     color: white;
@@ -361,12 +422,22 @@ footer {
     padding: 10px 0;
     /* margin-top: 20px; */
 }
+.top{
+    display: flex;
+    text-align: left;
+    justify-content: space-around;
+
+}
 
 img {
     max-width: 100%;
     height: auto;
 }
 
+.Links a{
+    text-decoration: none;
+    color: white;
+}
 /* Media Queries for Responsiveness */
 
 /* For tablets and smaller screens */
@@ -470,12 +541,22 @@ img {
         padding: 5px 0;
     }
 
-    /* Video adjustments */
-    .video video {
-        height: 650px;
-    }
+   
+
+/* 1st sec */
+.first_details{
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    margin-left: 201px;
+    /* margin-bottom: 147px; */
+    margin-top: -336px;
+    width: 400px;
+    
+}
 
     /* Home Section */
+
     #home .section h2 {
         font-size: 1.2rem;
     }
@@ -489,29 +570,47 @@ img {
     }
 
     /* Domain Carousel */
-    .card {
+    /* .card {
         flex: 0 0 60%;
         max-width: 60%;
     }
 
     .carousel {
         gap: 10px;
+        width: 500px;
+    } */
+
+
+    .carousel {
+        height: 3000px;
+        gap: 20px; /* Maintain the gap between cards *//
+    }
+   
+    
+    .card {
+        flex: 0 0 auto; /* Prevent shrinking */
+        width: 80%; /* Adjust width for better fit on smaller screens */
+        max-width: 300px; /* Optional: Limit the maximum size of cards */
     }
     .carousel-container {
-        width: 100%;
+        width: 105%;
         padding: 10px;
         position: relative;
         width: 78%;
-        max-width: 1200px;
-        overflow: hidden;
+        padding-left: 30px;
+        max-width: 2500px;
         margin: 23px;
     }
     .card img {
-        width: 100%;
+        width: 80%;
         border-radius: 10px;
         /* width: 180px; */
         height: 140px;
     }
+
+
+
+
     /* Apply Section */
     #apply {
         padding: 15px;

@@ -55,10 +55,10 @@ public class MyController {
     public void SendEmail(User user) {
         try {
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom("devildeb27@gmail.com"); // Your email address
+            message.setFrom("educareithub2024@gmail.com "); // Your official email address
             message.setTo(user.getEmail()); // Recipient's email address
             message.setSubject("Educare Internship Program");
-            message.setText("Thanks for applying for the internship at Educare!");
+            message.setText("Thanks for applying for the internship at Educare!"+"We will contact you soon!" );
             mailSender.send(message);
             System.out.println("Mail sent to: " + user.getEmail());
         } catch (Exception e) {
@@ -70,8 +70,8 @@ public class MyController {
     public void SendEAdminmail(User user) {
       try {
           SimpleMailMessage message = new SimpleMailMessage();
-          message.setFrom("devildeb27@gmail.com"); // Your email address
-          message.setTo("debmalyapan4@gmail.com"); // Recipient's email address
+          message.setFrom("devildeb27@gmail.com"); // Your official email address
+          message.setTo("snehashiskundu17@gmail.com"); // Recipient's admin email address
           message.setSubject("Educare Internship Program");
           message.setText("New User appiled"+user.getName()+" ,Email: "+ user.getEmail()+ " ,Phone: "+ user.getMobile());
           mailSender.send(message);

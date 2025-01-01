@@ -70,6 +70,7 @@ header {
 
 .logo img {
     height: 50px;
+   border-radius: 50px;
 }
 
 .nav-links {
@@ -86,7 +87,7 @@ header {
 }
 
 .nav-links a:hover {
-    text-decoration: underline;
+font-weight: bolder;
 }
 .video video{
     width: 100%;
@@ -416,7 +417,7 @@ button:hover {
 
 /* footer sec */
 footer {
-    background-color: #06021f;
+    background-color: #be2bbe;
     color: white;
     text-align: center;
     padding: 10px 0;

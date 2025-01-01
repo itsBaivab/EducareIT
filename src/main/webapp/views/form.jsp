@@ -2265,7 +2265,6 @@
                 <select id="domain" name="domain" required>
                     <option value="" disabled selected>Select a domain</option>
                     <option value="web-development">Web Development</option>
-                    <option value="full-stack-development">Full Stack Development</option>
                     <option value="android-development">Android Development</option>
                     <option value="data-science">Data Science</option>
                     <option value="java-programming">Java Programming</option>

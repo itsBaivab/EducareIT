@@ -10,7 +10,7 @@
     <div style="max-width: 600px; margin: 0 auto; background-color: #ffffff; padding: 20px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
         <h2 style="color: #007bff;">Confirmation of Internship Enrollment Form Submission</h2>
         <p> Dear ${Candidatename}, </p>
-        <p>Thank you for submitting your enrollment form for the ${InternshipProgramName} at Educare Intern Technology. We are pleased to confirm that we have successfully received your application.</p>
+        <p>Thank you for submitting your enrollment form for the $} at Educare Intern Technology. We are pleased to confirm that we have successfully received your application.</p>
         <p>Your interest in joining our program is greatly appreciated, and we are excited to learn more about your qualifications and aspirations. Our team is currently reviewing your submission, and we will be in touch soon to provide updates on the next steps in the selection process.</p>
         <p>Should we require any additional information or documents, we will reach out to you promptly. Meanwhile, if you have any questions or need assistance, feel free to contact us at <a href="tel:+9088907066">9088907066</a> or <a href="mailto:educareintern.technology@gmail.com">educareintern.technology@gmail.com</a>.</p>
         <p>We appreciate your enthusiasm and look forward to the opportunity to collaborate with talented individuals like you.</p>

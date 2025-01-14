@@ -86,11 +86,10 @@ public class MyController {
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
     
-            helper.setFrom("educareithub2024@gmail.com"); // Your official email address
+            helper.setFrom("educareithub2024@gmail.com"); // official email address
             helper.setTo(user.getEmail()); // Recipient's email address
             helper.setSubject("Thank you for your apllication to Educare Intern Technology");
     
-            // Load and replace placeholders in the email content
             String emailContent = getEmailContent("/templates/email-content.jsp", user.getName(), user.getDomain());
             helper.setText(emailContent, true); // Set email content as HTML
     

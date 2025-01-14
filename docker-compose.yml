@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  educare:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/Educare
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Poiu0987#
+      SPRING_MAIL_HOST: smtp.gmail.com
+      SPRING_MAIL_PORT: 587
+      SPRING_MAIL_USERNAME: educareintern.technology@gmail.com
+      SPRING_MAIL_PASSWORD: iykv mqfj ilud mxjr
+      SPRING_MVC_VIEW_PREFIX: /WEB-INF/views/
+      SPRING_MVC_VIEW_SUFFIX: .jsp
+    volumes:
+      - ./src/main/webapp:/app/src/main/webapp
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: Educare
+      MYSQL_ROOT_PASSWORD: Poiu0987#
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db_data:

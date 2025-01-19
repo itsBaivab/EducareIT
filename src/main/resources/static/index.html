@@ -1,15 +1,148 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Educare E-learning Platform</title>
+    <title>Educare Intern Technology</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-</head>
 
+    <link rel="icon" type="image/x-icon" href="image_web/SearchLogo.png">
+
+
+    <style>/* Certificate Section */
+        #certificates {
+            padding: 50px 20px;
+            background-color: #f8f8f8;
+        }
+        
+        #certificates h2 {
+            color: #6e006e;
+            margin-bottom: 20px;
+        }
+        
+        #certificates > p {
+            color: #555;
+            margin-bottom: 40px;
+        }
+        
+        .certificate-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1500px;
+            margin: 0 auto;
+        }
+        
+        .certificate-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0px 80px #ff68ef;
+            transition: transform 0.3s ease;
+            width: 300px;
+        }
+        
+        .certificate-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .certificate-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 2px solid #be2bbe;
+        }
+        
+        .certificate-info {
+            padding: 20px;
+        }
+        
+        .certificate-info h3 {
+            color: #6e006e;
+            margin-bottom: 10px;
+        }
+        
+        .certificate-info p {
+            color: #555;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .certificate-container {
+                gap: 20px;
+            }
+        
+            .certificate-card {
+                width: calc(50% - 20px);
+            }
+            .certificate-card img{
+                height: 272px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .certificate-card {
+                width: 100%;
+            }
+        
+            .certificate-info {
+                padding: 15px;
+            }
+        }
+        
+        /* Social Media Section */
+.social-media {
+    flex: 1;
+    min-width: 250px;
+    /* text-align: center; */
+}
+
+.social-icons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: translateY(-5px);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .social-media {
+        text-align: center;
+    }
+    
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-icons a {
+        font-size: 20px;
+    }
+    
+    .social-icons {
+        gap: 15px;
+    }
+}
+        </style>
+</head>
 <body>
+   
     <header>
         <div class="navbar-container">
             <div class="company-info">
@@ -22,44 +155,38 @@
                 &#9776;
             </button>
             <nav class="nav-links">
-                <a href="#home">home</a>
+                <a href="#firstSec">Home</a>
                 <a href="#domain">Internship</a>
                 <a href="#course">Course</a>
-                <a href="#job">Jobs</a>
-                <a href="#links">Contact</a>
+                <!-- <a href="#job">Jobs</a> -->
+                 <!-- Jobs section will add soon  -->
+                 <a href="#home">About Us</a>
+                <a href="User_Contact">Contact</a>
 
             </nav>
         </div>
     </header>
 
     <main>
-        <!-- <div class="video">
-            <video 
-            src="Video.mp4" 
-            autoplay 
-            muted 
-            loop 
-            playsinline ></video>
-            Your browser does not support the video tag.
-        </video>   
-        </div> -->
+       
 
-        <div class="firstSec">
-            <img src="image_web/back.jpg" alt="bg_img" class="" >
-            <div class="first_details">
-                <h2>Take Your Coding Journey to the Next Level with Educare Intern Technology</h2>
-                <p>Join Our Exciting Internship Journey</p>
-                <a href="user_apply"> <button class="button">Apply now</button></a>
-               
-            </div>
+        
 
-        </div>
+            <div class="firstSec">
+                <img src="image_web/back.jpg" alt="bg_img" class="" >
+                <div class="first_details">
+                    <h2>Take Your Coding Journey to the Next Level with Educare Intern Technology</h2>
+                    <p>Join Our Exciting <span id="element"></span></p>
+                    <a href="user_apply"> <button class="button">Apply now</button></a>
 
+                </div>
+    
+            </div>        
 <section id="home">
             <div class="section" >
                 <h2 data-aos="flip-up" 
                 data-aos-delay="100"
-                data-aos-duration="1000">Our Mission</h2>
+                data-aos-duration="1000">About</h2>
                 <div class="content"   
                 data-aos="fade-up"
                 data-aos-offset="200"
@@ -67,42 +194,68 @@
                 data-aos-duration="1000">
                     <img src="mission.png" alt="img">
                     <p>
-                        At Educare Intern Technology, we believe that internships are more than just checkboxes on a resume. They’re transformative experiences that shape future leaders, problem solvers, and innovators. Our mission is simple: Empowering Tomorrow’s Talent Today.
+                    Welcome to <b>Educare Intern Technology</b> , your trusted partner in advancing your technical skills and career prospects!
+We are an online internship and learning platform dedicated to empowering students and professionals with real-world experience in various technical domains, such as Web Development, Software Engineering, Data Science, and more. Our mission is to bridge the gap between academic knowledge and industry demands, preparing you for a thriving future in the tech world.
                     </p>
                 </div>
-                  
-                
-            </div>
-            
-         <div class="section">
-                <h2 data-aos="flip-up" 
-                data-aos-delay="100"
-                data-aos-duration="1000">What Sets Us Apart</h2>
-                <div class="content-2" data-aos="fade-up"
-                data-aos-offset="200"
-                data-aos-delay="50"
-                data-aos-duration="1000">
-                     <li> <b>Curated Opportunities:</b> We curate a wide range of internship opportunities across various industries, ensuring that each one aligns with your interests and career goals.</li>
-                    <li><b>Quality Partnerships:</b> We collaborate with leading companies, startups, and organizations to provide meaningful internships. Whether you’re passionate about tech, marketing, social impact, or design, we’ve got you covered.</li>
-                    <li><b>Skill Development:</b> Beyond coffee runs and photocopying, our internships focus on skill development. You’ll gain hands-on experience, work on real projects, and learn from industry experts.</li>
-                    <li><b>Community:</b> Join a vibrant community of like-minded interns. Connect, learn, and grow together through workshops, networking events, and mentorship programs.</li>
-                </div>
-             
             </div>
             <div class="section">
                 <h2 data-aos="flip-up" 
-                data-aos-delay="100"
-                data-aos-duration="1000">How It Works</h2>
-                <div class="content-2" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000">
-                     <li> <b>Browse:</b> Explore our internship listings. Filter by industry, location, and duration to find the perfect fit.</li>
-                    <li><b>Apply: </b>Submit your application directly through our platform. Showcase your skills, passion, and why you’re the ideal candidate.</li>
-                    <li><b>Verification: </b>Your application will be verified by our team. If any further information is needed, we will contact you via email.</li>
-                    <li><b>Offer Letter: </b>Upon shortlisting your profile, you will receive an offer letter via email. Once you accept the email, you can begin your journey, and further details will be provided via email.</li>
-                    <li><b>Learn & Grow:</b> Once accepted, dive into your internship. Immerse yourself in the work, collaborate with professionals, and expand your horizons.</li>
-                    <li><b>Celebrate: </b> At the end of your internship, celebrate your achievements and take those valuable experiences with you as you embark on your career journey.</li>
-                    <li><b>Certificate and Swags: </b>After completing your internship, you will receive a verified certificate and swags</li>
+                    data-aos-delay="100"
+                    data-aos-duration="1000">Why Choose Educare Intern Technology?</h2>
+            
+                <div class="content-2" data-aos="fade-up"
+                    data-aos-offset="200"
+                    data-aos-delay="50"
+                    data-aos-duration="1000">
+                    <div class="image-content">
+                        <img src="image_web/whyChose.png" alt="Why Choose Educare Intern Technology">
+                    </div>
+                    <ul class="text-content">
+                        <li><b>Hands-On Internships:</b> Gain practical exposure to live projects under the guidance of industry experts.</li>
+                        <li><b>Wide Range of Domains:</b> Explore internship opportunities in cutting-edge fields such as Web Development, Mobile App Development, Machine Learning, and beyond.</li>
+                        <li><b>ISO-Certified Programs:</b> Our programs come with ISO-certified certifications, ensuring the quality and credibility of your achievements.</li>
+                        <li><b>Community:</b> Join a vibrant community of like-minded interns. Connect, learn, and grow together through workshops, networking events, and mentorship programs.</li>
+                        <li><b>MSME Certification:</b> Stand out with government-recognized MSME certificates, boosting your profile in the competitive job market.</li>
+                        <li><b>Flexible Learning:</b> Learn and intern at your own pace with our online platform, tailored to fit your schedule.</li>
+                    </ul>
                 </div>
-             
+            </div>
+
+            <section id="vision-section">
+                <div class="vision-card">
+                    <div class="vision-content">
+                        <h2>Our Vision</h2>
+                        <p>
+                            At Educare Intern Technology, we envision a future where every student and professional 
+                            can seamlessly transition from learning to contributing to the tech industry. We strive 
+                            to make quality technical education and experience accessible to all, fostering 
+                            innovation and excellence in every learner.
+                        </p>
+                    </div>
+                    <img src="image-vision.png" alt="Our Vision Image" />
+                </div>
+            </section>
+
+
+            <div class="section">
+                <h2 data-aos="flip-up" 
+                    data-aos-delay="100"
+                    data-aos-duration="1000">How It Works</h2>
+                <div class="content-2" data-aos="fade-up" data-aos-offset="200" data-aos-delay="50" data-aos-duration="1000">
+                    <ul class="text-content">
+                        <li><b>Browse:</b> Explore our internship listings. Filter by industry, location, and duration to find the perfect fit.</li>
+                        <li><b>Apply:</b> Submit your application directly through our platform. Showcase your skills, passion, and why you’re the ideal candidate.</li>
+                        <li><b>Verification:</b> Your application will be verified by our team. If any further information is needed, we will contact you via email.</li>
+                        <li><b>Offer Letter:</b> Upon shortlisting your profile, you will receive an offer letter via email. Once you accept the email, you can begin your journey, and further details will be provided via email.</li>
+                        <li><b>Learn & Grow:</b> Once accepted, dive into your internship. Immerse yourself in the work, collaborate with professionals, and expand your horizons.</li>
+                        <li><b>Celebrate:</b> At the end of your internship, celebrate your achievements and take those valuable experiences with you as you embark on your career journey.</li>
+                        <li><b>Certificate and Swags:</b> After completing your internship, you will receive a verified certificate and swags.</li>
+                    </ul>
+                    <div class="image-content">
+                        <img src="image_web/Works.png" alt="How It Works">
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -167,10 +320,46 @@
                             <a href="user_apply"> <button class="button">Apply now</button></a>
 
                     </div>
+                    <div class="card"  data-aos="zoom-in" data-aos-delay="500">
+                        <img src="card-image/AI-ML.png" alt="Card 8">
+                        <h3>Artificial Intelligence-Machine Learning</h3>
+                        <p>The AI/ML Internship program provides a hands-on learning experience that bridges the gap between theoretical knowledge and practical implementation of AI & ML technologies.</p>
+                            <a href="user_apply"> <button class="button">Apply now</button></a>
+
+                    </div>
+
+                    <div class="card"  data-aos="zoom-in" data-aos-delay="500">
+                        <img src="card-image/aws.png" alt="Card 8">
+                        <h3> AWS Cloud</h3>
+                        <p>The AWS Cloud Internship Program is an exceptional opportunity for individuals eager to dive into the world of cloud computing and gain hands-on experience with Amazon Web Services.</p>
+                            <a href="user_apply"> <button class="button">Apply now</button></a>
+
+                    </div>
+
+                    
                 </div>
                 <!-- <button class="carousel-btn right-btn">&#8250;</button> -->
             </div>
         </section>   
+
+
+<!-- sample certificate section -->
+<section id="certificates">
+    <h2>Sample Certificate</h2>
+    <p>Our internship completion certificates are recognized across the industry</p>
+    
+    <div class="certificate-container">
+        <div class="certificate-card" data-aos="fade-up" data-aos-delay="100">
+            <img src="certificates/cert.png" alt="Web Development Certificate">
+            <div class="certificate-info">
+            </div>
+        </div>
+
+   
+</section>
+
+
+
 
 <!-- course -->
 <section id="course">
@@ -181,8 +370,108 @@
 
         <p>Lets Learn Coding And Grow Skill  With Educare Intern Technology</p>
     </div>
-    <div class="course-body"> <p data-aos="zoom-in-right">Comming Soon........</p></div>
+    <div class="course-body"> <p data-aos="zoom-in-right">Coming soon! Stay tuned.</p></div>
     
+</section>
+
+<section id="team">
+    <h2>Our Team</h2>
+    <p>Meet the passionate minds behind Educare Intern Technology</p>
+    
+    <div class="team-container">
+        <div class="team-card" data-aos="fade-up">
+            <div class="team-img">
+                <img src="Team-Image/Mem-4.jpg" alt="Team Member">
+            </div>
+            <div class="team-info">
+                <h3>Krishna Ch. Ghosh </h3>
+                <p>Founder & MD</p>
+                <!-- <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div> -->
+            </div>
+        </div>
+
+   
+
+        <div class="team-card" data-aos="fade-up" >
+            <div class="team-img">
+                <img src="Team-Image/Mem-3.jpg" alt="Team Member">
+            </div>
+            <div class="team-info">
+                <h3>Nabarup Sarkar </h3>
+                <p>CEO</p>
+                <!-- <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div> -->
+            </div>
+        </div>
+
+        
+        <div class="team-card" data-aos="fade-up" >
+            <div class="team-img">
+                <img src="Team-Image/Mem-5.jpg" alt="Team Member">
+            </div>
+            <div class="team-info">
+                <h3>Snehashis Kundu </h3>
+                <p>Programme Co-Odinator</p>
+                <!-- <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div> -->
+            </div>
+        </div>
+
+
+<div class="team-card" data-aos="fade-up" >
+    <div class="team-img">
+        <img src="Team-Image/Mem-2.jpg" alt="Team Member">
+    </div>
+    <div class="team-info">
+        <h3>Debmalya Pan</h3>
+        <p>Full Stack Developer</p>
+        <!-- <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div> -->
+    </div>
+</div>
+<div class="team-card" data-aos="fade-up" >
+    <div class="team-img">
+        <img src="Team-Image/Mem-1.jpg" alt="Team Member">
+    </div>
+    <div class="team-info">
+        <h3>Baivab Mukhopadhyay</h3>
+        <p>Trainer,DevOps Engineer </p>
+        <!-- <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div> -->
+    </div>
+</div>
+<div class="team-card" data-aos="fade-up" data-aos-delay="100">
+    <div class="team-img">
+        <img src="Team-Image/Mem-6.jpg" alt="Team Member">
+    </div>
+    <div class="team-info">
+        <h3>Swapnil Dutta</h3>
+        <p>Training Mentor</p>
+        <!-- <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+        </div> -->
+    </div>
+</div>
+</div>
+
 </section>
 
     </main>
@@ -195,6 +484,10 @@
                 <a href="#home"><li>Home</li></a>
                 <a href="#domain"><li>Internship</li></a>
                 <a href="#course"><li>Course</li></a>
+                <a href="User_Contact">Contact</a>
+                <a href="policy"><li>Terms & Conditions</li></a>
+
+
             </div>
             <div class="contact">
                 <h3>Contact Info</h3>
@@ -205,16 +498,59 @@
                
             </div>
 
+
         </div>
         
         <p>&copy; 2025 Educare Intern Technology. All rights reserved.</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/educareintern" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/company/educare-intern-technology" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.instagram.com/educareintern" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
     </footer>
+  
 
     <script src="script.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init();
+          // Add before closing </body> tag
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle all types of refresh
+    window.addEventListener('beforeunload', function(e) {
+        localStorage.setItem('refreshTarget', '/#firstSec');
+    });
+
+    // Check if we're coming from a refresh
+    if (performance.navigation.type === 1) {
+        window.location.href = localStorage.getItem('refreshTarget') || '/#firstSec';
+    }
+
+    // Handle F5 and Ctrl+R
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'F5' || (e.ctrlKey && e.key === 'r')) {
+            e.preventDefault();
+            window.location.href = '/#firstSec';
+        }
+    });
+});
     </script>
+
+
+<!-- autotype link: -->
+
+<script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+<script>
+    // auto type
+    var typed = new Typed('#element', {
+        strings: ['Internships', 'Courses' ],
+        typeSpeed: 80,
+    });
+</script>
+
+
+
     <script src="https://kit.fontawesome.com/9a373b1f74.js" crossorigin="anonymous"></script>
 </body>
 

@@ -3,8 +3,8 @@
         const navLinks = document.querySelector('.nav-links');
         navLinks.classList.toggle('active');
     });
- 
-    
+
+
 
 
 //     const carousel = document.querySelector('.carousel');

@@ -23,7 +23,6 @@ public class User {
     @Column
     private String domain;
 
-    
     public String getName() {
         return name;
     }

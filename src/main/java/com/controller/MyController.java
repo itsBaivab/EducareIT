@@ -109,7 +109,7 @@ public String saveUserRegistration(@ModelAttribute("user") User user, Model mode
             MimeMessage message = mailSender.createMimeMessage();
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
     
-            helper.setFrom("educareithub2024@gmail.com");
+            helper.setFrom("educareintern.technology@gmail.com");
             helper.setTo(user.getEmail());
             helper.setSubject("Thank you for your application to Educare Intern Technology");
     

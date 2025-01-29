@@ -1,235 +1,68 @@
-2025-01-21 00:04:45.378 [main] INFO  c.example.educare.EducareApplication - Starting EducareApplication using Java 17.0.13 with PID 18208 (C:\Users\debma\OneDrive\Desktop\educare\target\classes started by debma in C:\Users\debma\OneDrive\Desktop\educare)
-2025-01-21 00:04:45.395 [main] DEBUG c.example.educare.EducareApplication - Running with Spring Boot v3.3.5, Spring v6.1.14
-2025-01-21 00:04:45.396 [main] INFO  c.example.educare.EducareApplication - The following 1 profile is active: "dev"
-2025-01-21 00:04:46.571 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-01-21 00:04:46.658 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 71 ms. Found 1 JPA repository interface.
-2025-01-21 00:04:48.141 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2025-01-21 00:04:48.182 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-01-21 00:04:48.182 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
-2025-01-21 00:04:48.609 [main] INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
-2025-01-21 00:04:48.625 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-01-21 00:04:48.626 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3056 ms
-2025-01-21 00:04:48.975 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-01-21 00:04:49.133 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
-2025-01-21 00:04:49.258 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-01-21 00:04:50.008 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-01-21 00:04:50.086 [main] WARN  com.zaxxer.hikari.HikariConfig - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
-2025-01-21 00:04:50.086 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-01-21 00:04:52.160 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@38e46765
-2025-01-21 00:04:52.160 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2025-01-21 00:04:54.099 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-01-21 00:04:54.434 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-01-21 00:04:55.174 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-01-21 00:04:55.205 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
-2025-01-21 00:04:55.833 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2025-01-21 00:04:55.844 [main] INFO  c.example.educare.EducareApplication - Started EducareApplication in 11.66 seconds (process running for 12.404)
-2025-01-21 00:05:12.500 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-01-21 00:05:12.502 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2025-01-21 00:05:12.503 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 0 ms
-2025-01-21 00:17:02.352 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m9s967ms299µs500ns).
-2025-01-21 01:23:23.514 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m43s333ms206µs599ns).
-2025-01-21 01:24:25.148 [main] INFO  c.example.educare.EducareApplication - Starting EducareApplication using Java 17.0.13 with PID 10592 (C:\Users\debma\OneDrive\Desktop\educare\target\classes started by debma in C:\Users\debma\OneDrive\Desktop\educare)
-2025-01-21 01:24:25.148 [main] DEBUG c.example.educare.EducareApplication - Running with Spring Boot v3.3.5, Spring v6.1.14
-2025-01-21 01:24:25.154 [main] INFO  c.example.educare.EducareApplication - The following 1 profile is active: "dev"
-2025-01-21 01:24:26.440 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-01-21 01:24:26.555 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 96 ms. Found 1 JPA repository interface.
-2025-01-21 01:24:28.557 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2025-01-21 01:24:28.603 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-01-21 01:24:28.605 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
-2025-01-21 01:24:29.076 [main] INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
-2025-01-21 01:24:29.086 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-01-21 01:24:29.086 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3803 ms
-2025-01-21 01:24:29.403 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-01-21 01:24:29.584 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
-2025-01-21 01:24:29.705 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-01-21 01:24:30.469 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-01-21 01:24:30.541 [main] WARN  com.zaxxer.hikari.HikariConfig - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
-2025-01-21 01:24:30.549 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-01-21 01:25:01.932 [main] WARN  o.h.e.jdbc.spi.SqlExceptionHelper - SQL Error: 0, SQLState: 08S01
-2025-01-21 01:25:01.934 [main] ERROR o.h.e.jdbc.spi.SqlExceptionHelper - Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-2025-01-21 01:25:01.938 [main] WARN  o.h.e.j.e.i.JdbcEnvironmentInitiator - HHH000342: Could not obtain connection to query metadata
-org.hibernate.exception.JDBCConnectionException: unable to obtain isolated JDBC connection [Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.] [n/a]
-	at org.hibernate.exception.internal.SQLStateConversionDelegate.convert(SQLStateConversionDelegate.java:100)
-	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:58)
-	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108)
-	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94)
-	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:292)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:124)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:78)
-	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
-	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:221)
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:189)
-	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502)
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
-	at com.example.educare.EducareApplication.main(EducareApplication.java:19)
-Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:174)
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:64)
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815)
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438)
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241)
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189)
-	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
-	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
-	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
-	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
-	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
-	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
-	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
-	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:439)
-	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61)
-	... 35 common frames omitted
-Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Unknown Source)
-	at java.base/java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:61)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:104)
-	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:149)
-	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:165)
-	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:582)
-	at com.mysql.cj.protocol.a.NativeProtocol.readServerCapabilities(NativeProtocol.java:537)
-	at com.mysql.cj.protocol.a.NativeProtocol.beforeHandshake(NativeProtocol.java:425)
-	at com.mysql.cj.protocol.a.NativeProtocol.connect(NativeProtocol.java:1426)
-	at com.mysql.cj.NativeSession.connect(NativeSession.java:133)
-	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:935)
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:805)
-	... 48 common frames omitted
-Caused by: java.net.SocketTimeoutException: Read timed out
-	at java.base/sun.nio.ch.NioSocketImpl.timedRead(Unknown Source)
-	at java.base/sun.nio.ch.NioSocketImpl.implRead(Unknown Source)
-	at java.base/sun.nio.ch.NioSocketImpl.read(Unknown Source)
-	at java.base/sun.nio.ch.NioSocketImpl$1.read(Unknown Source)
-	at java.base/java.net.Socket$SocketInputStream.read(Unknown Source)
-	at com.mysql.cj.protocol.ReadAheadInputStream.fill(ReadAheadInputStream.java:107)
-	at com.mysql.cj.protocol.ReadAheadInputStream.readFromUnderlyingStreamIfNecessary(ReadAheadInputStream.java:150)
-	at com.mysql.cj.protocol.ReadAheadInputStream.read(ReadAheadInputStream.java:180)
-	at java.base/java.io.FilterInputStream.read(Unknown Source)
-	at com.mysql.cj.protocol.FullReadInputStream.readFully(FullReadInputStream.java:64)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeaderLocal(SimplePacketReader.java:81)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:63)
-	at com.mysql.cj.protocol.a.SimplePacketReader.readHeader(SimplePacketReader.java:45)
-	at com.mysql.cj.protocol.a.NativeProtocol.readMessage(NativeProtocol.java:576)
-	... 54 common frames omitted
-2025-01-21 01:25:01.988 [main] ERROR o.s.o.j.LocalContainerEntityManagerFactoryBean - Failed to initialize JPA EntityManagerFactory: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)
-2025-01-21 01:25:01.988 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)
-2025-01-21 01:25:02.001 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
-2025-01-21 01:25:02.040 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2025-01-21 01:25:02.116 [main] ERROR o.s.boot.SpringApplication - Application run failed
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205)
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954)
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
-	at com.example.educare.EducareApplication.main(EducareApplication.java:19)
-Caused by: org.hibernate.service.spi.ServiceException: Unable to create requested service [org.hibernate.engine.jdbc.env.spi.JdbcEnvironment] due to: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:276)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215)
-	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45)
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:221)
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:189)
-	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431)
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502)
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409)
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396)
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853)
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802)
-	... 15 common frames omitted
-Caused by: org.hibernate.HibernateException: Unable to determine Dialect without JDBC metadata (please set 'jakarta.persistence.jdbc.url' for common cases or 'hibernate.dialect' when a custom Dialect implementation must be provided)
-	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.determineDialect(DialectFactoryImpl.java:191)
-	at org.hibernate.engine.jdbc.dialect.internal.DialectFactoryImpl.buildDialect(DialectFactoryImpl.java:87)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentWithDefaults(JdbcEnvironmentInitiator.java:153)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:364)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:124)
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:78)
-	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130)
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263)
-	... 30 common frames omitted
-2025-01-21 01:32:14.712 [main] INFO  c.example.educare.EducareApplication - Starting EducareApplication using Java 17.0.13 with PID 21808 (C:\Users\debma\OneDrive\Desktop\educare\target\classes started by debma in C:\Users\debma\OneDrive\Desktop\educare)
-2025-01-21 01:32:14.713 [main] DEBUG c.example.educare.EducareApplication - Running with Spring Boot v3.3.5, Spring v6.1.14
-2025-01-21 01:32:14.717 [main] INFO  c.example.educare.EducareApplication - The following 1 profile is active: "dev"
-2025-01-21 01:32:15.778 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-01-21 01:32:15.882 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 85 ms. Found 1 JPA repository interface.
-2025-01-21 01:32:17.644 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2025-01-21 01:32:17.673 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-01-21 01:32:17.674 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
-2025-01-21 01:32:18.243 [main] INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
-2025-01-21 01:32:18.259 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-01-21 01:32:18.265 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3433 ms
-2025-01-21 01:32:18.625 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-01-21 01:32:18.810 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
-2025-01-21 01:32:18.944 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-01-21 01:32:19.888 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-01-21 01:32:19.961 [main] WARN  com.zaxxer.hikari.HikariConfig - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
-2025-01-21 01:32:19.963 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-01-21 01:32:24.150 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@25421809
-2025-01-21 01:32:24.168 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2025-01-21 01:32:26.599 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-01-21 01:32:27.182 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-01-21 01:32:27.971 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-01-21 01:32:28.003 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
-2025-01-21 01:32:28.683 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2025-01-21 01:32:28.704 [main] INFO  c.example.educare.EducareApplication - Started EducareApplication in 14.96 seconds (process running for 15.767)
-2025-01-21 01:35:06.643 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-01-21 01:35:06.644 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2025-01-21 01:35:06.646 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
-2025-01-21 02:00:28.355 [HikariPool-1 housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m3s725ms374µs399ns).
-2025-01-21 02:02:03.793 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-01-21 02:02:03.839 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
-2025-01-21 02:02:05.608 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-01-30 00:18:55.913 [main] INFO  c.example.educare.EducareApplication - Starting EducareApplication using Java 21.0.2 with PID 25456 (C:\Users\debma\OneDrive\Desktop\educare\target\classes started by debma in C:\Users\debma\OneDrive\Desktop\educare)
+2025-01-30 00:18:55.945 [main] DEBUG c.example.educare.EducareApplication - Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-30 00:18:55.949 [main] INFO  c.example.educare.EducareApplication - The following 1 profile is active: "dev"
+2025-01-30 00:18:57.069 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-30 00:18:57.179 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 88 ms. Found 1 JPA repository interface.
+2025-01-30 00:18:58.725 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-30 00:18:58.764 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-30 00:18:58.764 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-30 00:18:59.189 [main] INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2025-01-30 00:18:59.204 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-30 00:18:59.204 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3094 ms
+2025-01-30 00:18:59.515 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-30 00:18:59.652 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-01-30 00:18:59.736 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-30 00:19:00.364 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-30 00:19:00.431 [main] WARN  com.zaxxer.hikari.HikariConfig - HikariPool-1 - idleTimeout has been set but has no effect because the pool is operating as a fixed size pool.
+2025-01-30 00:19:00.431 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-30 00:19:15.002 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7ecb9e17
+2025-01-30 00:19:15.016 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-30 00:19:17.768 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-30 00:19:20.219 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-30 00:19:21.242 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-30 00:19:21.312 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2025-01-30 00:19:21.999 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-30 00:19:22.012 [main] INFO  c.example.educare.EducareApplication - Started EducareApplication in 27.078 seconds (process running for 28.114)
+2025-01-30 00:19:30.080 [http-nio-8080-exec-5] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-30 00:19:30.082 [http-nio-8080-exec-5] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-30 00:19:30.090 [http-nio-8080-exec-5] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2025-01-30 00:19:57.304 [http-nio-8080-exec-4] INFO  com.controller.MyController - User application attempt: debmalyapan4@gmail.com
+2025-01-30 00:19:59.527 [Thread-1] INFO  com.controller.MyController - Attempting to send confirmation email to: debmalyapan4@gmail.com
+2025-01-30 00:20:10.004 [Thread-1] INFO  com.controller.MyController - Confirmation email sent to user: debmalyapan4@gmail.com
+2025-01-30 00:20:10.004 [Thread-1] INFO  com.controller.MyController - Sending admin notification for new application: debmalyapan4@gmail.com
+2025-01-30 00:20:16.363 [Thread-1] INFO  com.controller.MyController - Notification email sent to admin.
+2025-01-30 00:35:14.643 [main] INFO  c.example.educare.EducareApplication - Starting EducareApplication using Java 21.0.2 with PID 27932 (C:\Users\debma\OneDrive\Desktop\educare\target\classes started by debma in C:\Users\debma\OneDrive\Desktop\educare)
+2025-01-30 00:35:14.647 [main] DEBUG c.example.educare.EducareApplication - Running with Spring Boot v3.3.5, Spring v6.1.14
+2025-01-30 00:35:14.647 [main] INFO  c.example.educare.EducareApplication - The following 1 profile is active: "dev"
+2025-01-30 00:35:15.767 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-01-30 00:35:15.884 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 97 ms. Found 1 JPA repository interface.
+2025-01-30 00:35:17.665 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-01-30 00:35:17.698 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-01-30 00:35:17.706 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.31]
+2025-01-30 00:35:18.250 [main] INFO  o.apache.jasper.servlet.TldScanner - At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+2025-01-30 00:35:18.264 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-01-30 00:35:18.266 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3495 ms
+2025-01-30 00:35:18.709 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-01-30 00:35:18.914 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-01-30 00:35:19.031 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-01-30 00:35:19.610 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-01-30 00:35:19.681 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-01-30 00:35:23.769 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@460f1cdb
+2025-01-30 00:35:23.771 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-01-30 00:35:25.744 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-01-30 00:35:27.334 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-01-30 00:35:28.319 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-01-30 00:35:28.385 [main] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page: class path resource [static/index.html]
+2025-01-30 00:35:29.188 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-01-30 00:35:29.214 [main] INFO  c.example.educare.EducareApplication - Started EducareApplication in 15.562 seconds (process running for 16.543)
+2025-01-30 00:35:37.715 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-01-30 00:35:37.725 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-01-30 00:35:37.728 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-01-30 00:37:33.291 [http-nio-8080-exec-4] INFO  com.controller.MyController - User application attempt: debmalyapan4@gmail.com
+2025-01-30 00:37:36.038 [Thread-1] INFO  com.controller.MyController - Attempting to send confirmation email to: debmalyapan4@gmail.com
+2025-01-30 00:37:48.347 [Thread-1] INFO  com.controller.MyController - Confirmation email sent to user: debmalyapan4@gmail.com
+2025-01-30 00:37:48.349 [Thread-1] INFO  com.controller.MyController - Sending admin notification for new application: debmalyapan4@gmail.com
+2025-01-30 00:38:03.837 [Thread-1] INFO  com.controller.MyController - Notification email sent to admin.
+2025-01-30 00:38:41.431 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-01-30 00:38:41.450 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-01-30 00:38:41.475 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error</title>
+    <title>Error</title>  <link rel="icon" type="image/x-icon" href="image_web/SearchLogo.png">
     <style>
         body {
             font-family: Arial, sans-serif;

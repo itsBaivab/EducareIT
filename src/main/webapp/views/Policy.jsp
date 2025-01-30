@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Policy</title>
+    <link rel="icon" type="image/x-icon" href="image_web/SearchLogo.png">
 
     <style>header {
         background-color: rgba(190, 43, 190, 0.8);

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact With Educare Intern Technology</title>
+    <link rel="icon" type="image/x-icon" href="image_web/SearchLogo.png">
     <style>
 
         /* General Body and Header Styling */

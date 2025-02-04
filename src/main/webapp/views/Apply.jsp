@@ -10,7 +10,7 @@
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: url('background_image.png') no-repeat center center fixed;
+    background: url('image_web/back.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #333;
 
@@ -18,7 +18,7 @@
 
 /* Header Styling */
 header {
-    background-color: rgba(190, 43, 190, 0.8);
+    background:  linear-gradient(to right, #ab16c2, #3916c3);
     color: white;
     padding: 15px 20px;
     position: sticky;
@@ -73,7 +73,10 @@ header {
 
 .form-container h2 {
     margin-bottom: 20px;
-    color: #444;
+    /* color: #444; */
+    background: linear-gradient(to right, #ab16c2, #3916c3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .form-container h4 {
@@ -106,7 +109,7 @@ header {
 .form-group button {
     width: 100%;
     padding: 10px;
-    background-color: #be2bbe;
+    background:  linear-gradient(to right, #ab16c2, #3916c3);
     color: white;
     border: none;
     border-radius: 5px;
@@ -117,7 +120,7 @@ header {
 }
 
 .form-group button:hover {
-    background-color: #a02ca0;
+    background:  linear-gradient(to right, #ab16c2, #3916c3);
 }
 
 /* Responsive Design */

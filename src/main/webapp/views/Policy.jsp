@@ -7,8 +7,8 @@
     <link rel="icon" type="image/x-icon" href="image_web/SearchLogo.png">
 
     <style>header {
-        background-color: rgba(190, 43, 190, 0.8);
-        color: white;
+    background:  linear-gradient(to right, #ab16c2, #3916c3);
+    color: white;
         padding: 15px 20px;
         position: sticky;
         top: 0;

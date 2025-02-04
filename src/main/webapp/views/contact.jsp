@@ -17,7 +17,7 @@ body {
 
 /* Header Styling */
 header {
-    background-color: #be2bbe;
+    background:  linear-gradient(to right, #ab16c2, #3916c3);
     color: white;
     padding: 10px 20px;
 }
@@ -69,7 +69,7 @@ header {
 
 
 footer {
-    background-color: #be2bbe;
+    background:  linear-gradient(to right, #ab16c2, #3916c3);
     color: white;
     text-align: center;
     padding: 10px 0;
@@ -113,7 +113,10 @@ footer {
 h2 {
     text-align: center;
     margin-top: 20px;
-    color: #be2bbe;
+    /* color: #be2bbe; */
+    background: linear-gradient(to right, #ab16c2, #3916c3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .form-container {
@@ -149,7 +152,7 @@ textarea:focus {
 }
 
 .btn-submit {
-    background-color: #be2bbe;
+    background:  linear-gradient(to right, #ab16c2, #3916c3);
     color: white;
     padding: 10px 20px;
     border: none;
@@ -161,7 +164,7 @@ textarea:focus {
 }
 
 .btn-submit:hover {
-    background-color: #a522a5;
+    background:  linear-gradient(to right, #89169a, #3013a4);
 }
 
 #location {

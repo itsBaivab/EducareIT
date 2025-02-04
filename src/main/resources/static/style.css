@@ -8,7 +8,8 @@ body {
 
 /* Header Styling */
 header {
-    background-color: rgba(190, 43, 190, 0.8);
+    /* background-color: rgba(190, 43, 190, 0.8); */
+    background: linear-gradient(to right, #ab16c2, #3916c3);
     color: white;
     padding: 15px 20px;
     position: sticky;
@@ -87,13 +88,18 @@ header {
 
 .firstSec h2 {
     font-size: 40px;
-    color: #6e006e;
+    /* color: #6e006e; */
+    background: linear-gradient(to right, #ab16c2, #3916c3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .button {
     font-size: 18px;
-    background-color: #be2bbe;
+    /* background-color: #be2bbe; */
+    background: linear-gradient(to right, #ab16c2, #3916c3);
     width: 170px;
     height: 35px;
     color: #ffffff;
@@ -118,8 +124,10 @@ section {
 }
 
 #home .section h2 {
-    color: #6e006e;
-    margin-bottom: 10px;
+    /* color: #6e006e; */
+    background: linear-gradient(to right, #ab16c2, #3916c3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;    margin-bottom: 10px;
     text-align: center;
 }
 
@@ -159,8 +167,11 @@ section {
 }
 
 #why-choose .section h2 {
-    color: #6e006e;
-    margin-bottom: 20px;
+    /* color: #6e006e; */
+    background: linear-gradient(to right, #ab16c2, #3916c3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
 }
 
 #why-choose .section .content-2 {
@@ -202,8 +213,11 @@ section {
 }
 
 #how-it-works h2 {
-    color: #6e006e;
-    margin-bottom: 20px;
+    /* color: #6e006e; */
+    background: linear-gradient(to right, #ab16c2, #3916c3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
 }
 
 #how-it-works .content-2 {
@@ -254,7 +268,10 @@ section {
     align-items: center;
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
-    box-shadow: 0 0px 10px rgb(255, 4, 192);
+    box-shadow: 0 0px 10px rgb(149, 17, 186);
+   
+    /* box-shadow: 0 0px 10px linear-gradient(to right, #ab16c2, #3916c3); */
+
     padding: 20px;
     max-width: 1000px;
     margin: auto;
@@ -272,8 +289,11 @@ section {
 }
 
 .vision-content h2 {
-    color: #6e006e;
-    font-size: 1.8rem;
+    /* color: #6e006e; */
+    background: linear-gradient(to right, #ab16c2, #3916c3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+        font-size: 1.8rem;
     margin-bottom: 10px;
 }
 
@@ -285,8 +305,10 @@ section {
 
 /* Domain Section */
 #domain {
-    background-color: #ffcdf3d8;
-    color: #6e006e;
+    background-color: #ffcdf3d8; /* Keeps the background color */
+    color: #3e279c; /* Fallback color for non-supported browsers */
+    
+
 }
 
 #domain h2 {
@@ -373,8 +395,10 @@ section {
 }
 
 #certificates h2 {
-    color: #6e006e;
-    margin-bottom: 20px;
+    /* color: #6e006e; */
+    background: linear-gradient(to right, #ab16c2, #3916c3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;    margin-bottom: 20px;
 }
 
 #certificates > p {
@@ -395,7 +419,9 @@ section {
     background: white;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 0px 80px #ff68ef;
+    box-shadow: 0 0px 80px #ab16c2;
+    /* box-shadow: 0 0px 80px  linear-gradient(to right, #ab16c2, #3916c3); */
+
     transition: transform 0.3s ease;
     width: 300px;
 }
@@ -408,7 +434,7 @@ section {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    border-bottom: 2px solid #be2bbe;
+    border-bottom: 2px solid #ab16c2;
 }
 
 .certificate-info {
@@ -416,8 +442,11 @@ section {
 }
 
 .certificate-info h3 {
-    color: #6e006e;
-    margin-bottom: 10px;
+    /* color: #6e006e; */
+    background: linear-gradient(to right, #ab16c2, #3916c3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
 }
 
 .certificate-info p {
@@ -434,7 +463,10 @@ section {
     padding: 50px;
     font-size: 30px;
     margin-left: 20px;
-    color: #6e006e;
+    /* color: #6e006e; */
+    background: linear-gradient(to right, #ab16c2, #3916c3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .course-top p {
@@ -442,7 +474,10 @@ section {
 }
 
 .course-top h2 {
-    color: #6e006e;
+    /* color: #6e006e; */
+    background: linear-gradient(to right, #ab16c2, #3916c3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 
@@ -459,7 +494,8 @@ section {
 
 /* Footer Section */
 footer {
-    background-color: #be2bbe;
+    /* background-color: #be2bbe; */
+    background:  linear-gradient(to right, #ab16c2, #3916c3);
     color: white;
     padding: 40px 20px 20px;
 }
@@ -814,7 +850,11 @@ footer > p {
 }
 
 #team h2 {
-    color: #6e006e;
+    /* color: #6e006e; */
+    background: linear-gradient(to right, #ab16c2, #3916c3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
     margin-bottom: 10px;
 }
 
@@ -874,7 +914,11 @@ footer > p {
 }
 
 .team-info h3 {
-    color: #6e006e;
+    /* color: #6e006e; */
+    background: linear-gradient(to right, #ab16c2, #3916c3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
     margin-bottom: 5px;
     font-size: 0.9rem; /* Further reduced font size */
 }

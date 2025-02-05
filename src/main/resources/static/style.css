@@ -734,7 +734,9 @@ footer > p {
     .nav-links {
         flex-direction: column;
         gap: 10px;
-        align-items: flex-start;
+
+         align-items: center;
+
     }
 
     .form-container {

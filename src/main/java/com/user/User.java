@@ -53,6 +53,4 @@ public class User {
     public void setDomain(String domain) {
         this.domain = domain;
     }
-    
-
 }

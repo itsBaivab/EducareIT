@@ -6,6 +6,12 @@ on:
       - "production"
     types: [opened, synchronize, reopened]
 
+permissions:
+  actions: read
+  contents: read
+  checks: read # Add this permission
+
+
 jobs:
   build-and-test:
     name: Build and Test

@@ -76,7 +76,7 @@ jobs:
     name: Deploy to Test
     runs-on: ubuntu-latest
     environment:
-      name: pr-test
+      name: test-env
       url: ${{ needs.create-test-env.outputs.environment_url }}
 
     steps:

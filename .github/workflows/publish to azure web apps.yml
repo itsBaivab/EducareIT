@@ -13,7 +13,7 @@ jobs:
     name: Deploy to Azure
     environment:
       name: production
-      url: ${{ steps.deploy.outputs.webapp-url }}
+    #   url: ${{ steps.deploy.outputs.webapp-url }}
     runs-on: ubuntu-latest
     if: |
       github.event.workflow_run.conclusion == 'success' && 

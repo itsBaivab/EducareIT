@@ -2,7 +2,7 @@ name: Deploy to Azure Web App
 
 on:
   workflow_run:
-    workflows: ["Maven Build"]
+    workflows: ["Build and Push Docker Image"]
     types:
       - completed
     branches:
@@ -50,6 +50,13 @@ jobs:
           echo "Workflow Conclusion: ${{ github.event.workflow_run.conclusion }}"
           echo "Actor: ${{ github.actor }}"
           echo "Repository: ${{ github.repository }}"
+
+      - name: Branch Debug Info
+        run: |
+          echo "Current branch: ${{ github.ref }}"
+          echo "Default branch: ${{ github.event.repository.default_branch }}"
+          echo "Source workflow branch: ${{ github.event.workflow_run.head_branch }}"
+          echo "Workflow source: ${{ github.event.workflow_run.path }}"
 
       # Get the latest version tag
       - name: Checkout repository

@@ -1,5 +1,5 @@
 # This workflow builds and pushes a Docker image to Azure Container Registry
-name: Build and Push Docker Images
+name: Build and Push Docker Image
 
 on:
   workflow_run:

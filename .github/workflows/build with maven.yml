@@ -11,12 +11,10 @@ name: Maven Build
 on:
   push:
     branches:
-      - "main"
-      - "prod"
+      - "production"
   pull_request:
     branches:
-      - "main"
-      - "prod"
+      - "production"
 
 jobs:
   build:

@@ -14,16 +14,18 @@ jobs:
     name: Build and Publish
     environment:
       name: production
-    #   url: ${{ steps.deploy_info.outputs.url }} # Optional: Add deployment URL if available
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # Add permission to write to repository
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
-      # Step 1: Check out the repository with full history
+      # Step 1: Check out the repository with token
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.AUTH_TOKEN }} # Use GitHub token for authentication
 
       # Step 2: Get latest version tag
       - name: Get Latest Tag
@@ -67,8 +69,14 @@ jobs:
             educare.azurecr.io/educare-deployment:${{ env.NEW_VERSION }}-${{ env.BUILD_DATE }}
             educare.azurecr.io/educare-deployment:production
 
-      # Step 7: Create and push git tag
+      # Step 7: Configure Git
+      - name: Configure Git
+        run: |
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name "github-actions[bot]"
+
+      # Step 8: Create and push git tag with token
       - name: Create Git Tag
         run: |
           git tag ${{ env.NEW_VERSION }}
-          git push origin ${{ env.NEW_VERSION }}
+          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git ${{ env.NEW_VERSION }}

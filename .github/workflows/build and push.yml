@@ -66,9 +66,6 @@ jobs:
           tags: |
             educare.azurecr.io/educare-deployment:latest
             educare.azurecr.io/educare-deployment:${{ env.NEW_VERSION }}
-            educare.azurecr.io/educare-deployment:${{ env.NEW_VERSION }}-${{ env.BUILD_DATE }}
-            educare.azurecr.io/educare-deployment:production
-
       # Step 7: Configure Git
       - name: Configure Git
         run: |

@@ -9,6 +9,8 @@ on:
 jobs:
   build-and-test:
     name: Build and Test
+    environment:
+      name: production
     runs-on: ubuntu-latest
     outputs:
       image_tag: ${{ steps.version.outputs.tag }}
@@ -45,10 +47,40 @@ jobs:
       environment_url: ${{ steps.create-env.outputs.url }}
 
     steps:
+      - name: Debug Environment Variables
+        run: |
+          echo "Checking environment variables..."
+          echo "GITHUB_REF: ${{ github.ref }}"
+          echo "GITHUB_SHA: ${{ github.sha }}"
+          echo "PR_NUMBER: ${{ github.event.pull_request.number }}"
+          echo "Checking Azure Credentials format..."
+          if [ -n "${{ secrets.AZURE_CREDENTIALS }}" ]; then
+            echo "AZURE_CREDENTIALS is present"
+            # Print the structure (but not the actual values)
+            echo "${{ secrets.AZURE_CREDENTIALS }}" | jq 'keys' || echo "Invalid JSON format"
+          else
+            echo "❌ AZURE_CREDENTIALS is empty"
+          fi
+
       - name: Login to Azure
+        id: azure-login
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+        continue-on-error: true
+
+      - name: Check Azure Login Status
+        run: |
+          if [ "${{ steps.azure-login.outcome }}" == "failure" ]; then
+            echo "❌ Azure login failed"
+            echo "Running az account show to check current status..."
+            az account show || echo "No active Azure session"
+            exit 1
+          else
+            echo "✅ Azure login successful"
+            echo "Current Azure context:"
+            az account show
+          fi
 
       - name: Create Test Environment
         id: create-env
@@ -76,7 +108,7 @@ jobs:
     name: Deploy to Test
     runs-on: ubuntu-latest
     environment:
-      name: test-env
+      name: production
       url: ${{ needs.create-test-env.outputs.environment_url }}
 
     steps:

@@ -25,7 +25,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.AUTH_TOKEN }} # Use GitHub token for authentication
+          token: ${{ secrets.GITHUB_TOKEN }} # Use GitHub token for authentication
 
       # Step 2: Get latest version tag
       - name: Get Latest Tag

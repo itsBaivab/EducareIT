@@ -89,8 +89,7 @@ jobs:
           echo "::set-output name=status::success"  # Explicit status output
         if: success()
 
-
-# Start of the deploy job in the same file:
+  # Start of the deploy job in the same file:
 
   deploy:
     needs: publish # This ensures deploy runs after publish
@@ -98,17 +97,17 @@ jobs:
     environment:
       name: production
     runs-on: ubuntu-latest
+    permissions:
+      id-token: write # Required for Azure login
+      contents: read
     if: needs.publish.outputs.build_status == 'success'
 
     steps:
       - name: Azure Login
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZURE_CLIENT_ID }}
-          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
-          clientSecret: ${{ secrets.AZURE_CLIENT_SECRET }}
-        continue-on-error: false
+          creds: ${{ secrets.AZURE_CREDENTIALS }} # Changed from individual credentials to AZURE_CREDENTIALS
+          enable-AzPSSession: false
 
       - name: Verify Azure Connection
         run: |

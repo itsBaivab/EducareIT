@@ -2,7 +2,7 @@ name: Deploy to Azure Web App
 
 on:
   workflow_run:
-    workflows: ["Build and Push Docker Image"] # Match exactly with the source workflow name
+    workflows: ["Build and Push Docker Image"] # This must match EXACTLY
     types:
       - completed
     branches:
@@ -54,8 +54,3 @@ jobs:
           app-name: "educare-webapp" # Replace with your web app name
           slot-name: "educareintertechnology-pre-deployment" # Replace with your slot name
           images: "educare.azurecr.io/educare-deployment:${{ env.DEPLOY_VERSION }}"
-
-
-
-
-# doing a simple test commit 

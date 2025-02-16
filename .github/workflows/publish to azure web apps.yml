@@ -2,29 +2,38 @@ name: Deploy to Azure Web App
 
 on:
   workflow_run:
-    workflows: ["Build and Push Docker Image"] # This must match EXACTLY
+    workflows: ["Build and Push Docker Image"] # Must match exactly
     types:
       - completed
-    branches:
-      - "production"
+    branches: [production]
 
 permissions:
   actions: read
   contents: read
+  checks: read # Add this permission
 
 jobs:
   deploy:
     name: Deploy to Azure
     environment:
       name: production
-    #   url: ${{ steps.deploy.outputs.webapp-url }}
     runs-on: ubuntu-latest
     if: |
       github.event.workflow_run.conclusion == 'success' && 
-      github.event.workflow_run.head_branch == 'production'
+      github.event.workflow_run.head_branch == 'production' &&
+      github.event.workflow_run.workflow_id != github.workflow
 
     steps:
-      # Add debugging step
+      - name: Detailed Workflow Debug
+        run: |
+          echo "Workflow details:"
+          echo "Trigger workflow ID: ${{ github.event.workflow_run.workflow_id }}"
+          echo "Current workflow ID: ${{ github.workflow }}"
+          echo "Event workflow name: ${{ github.event.workflow_run.name }}"
+          echo "Event type: ${{ github.event.workflow_run.event }}"
+          echo "Conclusion: ${{ github.event.workflow_run.conclusion }}"
+          echo "Status: ${{ github.event.workflow_run.status }}"
+
       - name: Debug Trigger Info
         run: |
           echo "Triggering workflow: ${{ github.event.workflow_run.name }}"

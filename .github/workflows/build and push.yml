@@ -1,5 +1,5 @@
 # This workflow builds and pushes a Docker image to Azure Container Registry
-name: Build and Push Docker Image
+name: Build and Push Docker Image # This name must match exactly in the trigger
 
 on:
   workflow_run:
@@ -85,4 +85,5 @@ jobs:
         run: |
           echo "Workflow completed successfully"
           echo "Image Tag: ${{ env.NEW_VERSION }}"
+          echo "::set-output name=status::success"  # Explicit status output
         if: success()

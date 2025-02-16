@@ -1,0 +1,46 @@
+name: Deploy to Azure Web App
+
+on:
+  workflow_run:
+    workflows: ["Build and Push Docker Image"]
+    types:
+      - completed
+    branches:
+      - "production"
+
+jobs:
+  deploy:
+    name: Deploy to Azure
+    environment:
+      name: production
+      url: ${{ steps.deploy.outputs.webapp-url }}
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+
+    steps:
+      # Get the latest version tag
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get Latest Tag
+        id: get-latest-tag
+        run: |
+          latest_tag=$(git describe --tags --abbrev=0)
+          echo "DEPLOY_VERSION=$latest_tag" >> $GITHUB_ENV
+
+      # Login to Azure
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # Deploy to Azure Web App
+      - name: Deploy to Azure Web App
+        id: deploy
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: "educare-webapp" # Replace with your web app name
+          slot-name: "educareintertechnology-pre-deployment" # Replace with your slot name
+          images: "educare.azurecr.io/educare-deployment:${{ env.DEPLOY_VERSION }}"

@@ -1,6 +1,11 @@
 # This workflow builds and pushes a Docker image to Azure Container Registry
 name: Build and Push Docker Image
 
+# Add workflow permissions at the top level
+permissions:
+  contents: write # Required for pushing tags
+  packages: write # Required for pushing to container registry
+
 on:
   workflow_run:
     workflows: ["Maven Build"]
@@ -15,17 +20,15 @@ jobs:
     environment:
       name: production
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # Add permission to write to repository
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
-      # Step 1: Check out the repository with token
+      # Step 1: Enhanced checkout
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }} # Use GitHub token for authentication
+          persist-credentials: true # Ensure credentials are persisted
 
       # Step 2: Get latest version tag
       - name: Get Latest Tag
@@ -57,7 +60,7 @@ jobs:
           username: ${{ secrets.ACR_USERNAME }} # Updated secret name
           password: ${{ secrets.ACR_PASSWORD }} # Updated secret name
 
-      # Step 6: Build and push with semantic versioning
+      # Step 6: Build and push with simplified tagging
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
@@ -66,17 +69,18 @@ jobs:
           tags: |
             educare.azurecr.io/educare-deployment:latest
             educare.azurecr.io/educare-deployment:${{ env.NEW_VERSION }}
-            educare.azurecr.io/educare-deployment:${{ env.NEW_VERSION }}-${{ env.BUILD_DATE }}
-            educare.azurecr.io/educare-deployment:production
 
-      # Step 7: Configure Git
+      # Step 7: Enhanced Git configuration
       - name: Configure Git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
+          git remote set-url origin "https://${{ github.actor }}:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
 
-      # Step 8: Create and push git tag with token
+      # Step 8: Simplified tag pushing
       - name: Create Git Tag
         run: |
           git tag ${{ env.NEW_VERSION }}
-          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git ${{ env.NEW_VERSION }}
+          git push origin ${{ env.NEW_VERSION }}

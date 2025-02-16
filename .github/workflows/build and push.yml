@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write # Add permission to write to repository
+      id-token: write # Add permission to write to repository
+      packages: write # Add permission to write to repository
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     outputs:
       build_status: ${{ job.status }}
@@ -86,6 +88,9 @@ jobs:
           echo "Image Tag: ${{ env.NEW_VERSION }}"
           echo "::set-output name=status::success"  # Explicit status output
         if: success()
+
+
+# Start of the deploy job in the same file:
 
   deploy:
     needs: publish # This ensures deploy runs after publish

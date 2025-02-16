@@ -9,6 +9,8 @@ on:
 jobs:
   build-and-test:
     name: Build and Test
+    environment:
+      name: production
     runs-on: ubuntu-latest
     outputs:
       image_tag: ${{ steps.version.outputs.tag }}

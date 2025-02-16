@@ -16,6 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write # Add permission to write to repository
+      id-token: write # Add permission to write to repository
+      packages: write # Add permission to write to repository
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     outputs:
       build_status: ${{ job.status }}

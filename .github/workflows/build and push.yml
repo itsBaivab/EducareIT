@@ -87,6 +87,9 @@ jobs:
           echo "::set-output name=status::success"  # Explicit status output
         if: success()
 
+
+# Start of the deploy job in the same file:
+
   deploy:
     needs: publish # This ensures deploy runs after publish
     name: Deploy to Azure

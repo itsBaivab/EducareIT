@@ -1,138 +1,112 @@
-# Build and Push Docker Image to an Azure Container Registry
-name: Build and Push Docker Image # This name must match exactly in the trigger
+name: PR Build and Deploy
 
 on:
-  workflow_run:
-    workflows: ["Maven Build"]
-    types:
-      - completed
+  pull_request:
     branches:
       - "production"
+    types: [opened, synchronize, reopened]
 
 jobs:
-  publish:
-    name: Build and Push
-    environment:
-      name: production
+  build-and-test:
+    name: Build and Test
     runs-on: ubuntu-latest
-    permissions:
-      contents: write # Add permission to write to repository
-      id-token: write # Add permission to write to repository
-      packages: write # Add permission to write to repository
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     outputs:
-      build_status: ${{ job.status }}
-      image_tag: ${{ env.NEW_VERSION }}
+      image_tag: ${{ steps.version.outputs.tag }}
 
     steps:
-      # Step 1: Check out the repository with token
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }} # Use GitHub token for authentication
 
-      # Step 2: Get latest version tag
-      - name: Get Latest Tag
-        id: get-latest-tag
+      - name: Generate PR Version Tag
+        id: version
         run: |
-          latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0")
-          echo "LATEST_TAG=$latest_tag" >> $GITHUB_ENV
-          echo "BUILD_DATE=$(date -u +'%Y%m%d')" >> $GITHUB_ENV
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          echo "tag=pr-${PR_NUMBER}" >> $GITHUB_OUTPUT
 
-      # Step 3: Generate new version tag
-      - name: Generate Version
-        id: generate-version
-        run: |
-          current_version=${LATEST_TAG#v}
-          IFS='.' read -r major minor patch <<< "$current_version"
-          new_version="v$major.$minor.$((patch + 1))"
-          echo "NEW_VERSION=$new_version" >> $GITHUB_ENV
-
-      # Step 4: Add deployment URL (optional)
-      - name: Set deployment info
-        id: deploy_info
-        run: echo "url=https://educare.azurecr.io" >> $GITHUB_OUTPUT
-
-      # Step 5: Login to Azure Container Registry with environment secrets
-      - name: Log in to Azure Container Registry
+      - name: Login to Azure Container Registry
         uses: azure/docker-login@v1
         with:
           login-server: educare.azurecr.io
-          username: ${{ secrets.ACR_USERNAME }} # Updated secret name
-          password: ${{ secrets.ACR_PASSWORD }} # Updated secret name
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
 
-      # Step 6: Build and push with semantic versioning
-      - name: Build and push Docker image
+      - name: Build and Push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: |
-            educare.azurecr.io/educare-deployment:latest
-            educare.azurecr.io/educare-deployment:${{ env.NEW_VERSION }}
-      # Step 7: Configure Git
-      - name: Configure Git
-        run: |
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git config --global user.name "github-actions[bot]"
+          tags: educare.azurecr.io/educare-deployment:${{ steps.version.outputs.tag }}
 
-      # Step 8: Create and push git tag with token
-      - name: Create Git Tag
-        run: |
-          git tag ${{ env.NEW_VERSION }}
-          git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git ${{ env.NEW_VERSION }}
-
-      - name: Signal Workflow Completion
-        run: |
-          echo "Workflow completed successfully"
-          echo "Image Tag: ${{ env.NEW_VERSION }}"
-          echo "::set-output name=status::success"  # Explicit status output
-        if: success()
-
-  # Start of the deploy job in the same file:
-
-  deploy:
-    needs: publish # This ensures deploy runs after publish
-    name: Deploy to Azure
-    environment:
-      name: production
+  create-test-env:
+    name: Create Test Environment
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write # Required for Azure login
-      contents: read
-    if: needs.publish.outputs.build_status == 'success'
+    outputs:
+      environment_url: ${{ steps.create-env.outputs.url }}
 
     steps:
-      - name: Azure Login
+      - name: Login to Azure
         uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }} # Changed from individual credentials to AZURE_CREDENTIALS
-          enable-AzPSSession: false
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Verify Azure Connection
+      - name: Create Test Environment
+        id: create-env
         run: |
-          echo "Verifying Azure connection..."
-          az account show
-          if [ $? -ne 0 ]; then
-            echo "Failed to verify Azure connection"
-            exit 1
-          fi
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          SLOT_NAME="pr-${PR_NUMBER}"
 
-      - name: Deploy to Azure Web App
-        id: deploy
+          # Create deployment slot if it doesn't exist
+          az webapp deployment slot create \
+            --name educare-webapp \
+            --resource-group your-rg-name \
+            --slot $SLOT_NAME || true
+
+          # Get the slot URL
+          SLOT_URL=$(az webapp show \
+            --name educare-webapp \
+            --resource-group your-rg-name \
+            --slot $SLOT_NAME \
+            --query "defaultHostName" -o tsv)
+
+          echo "url=https://${SLOT_URL}" >> $GITHUB_OUTPUT
+
+  deploy:
+    needs: [build-and-test, create-test-env]
+    name: Deploy to Test
+    runs-on: ubuntu-latest
+    environment:
+      name: pr-test
+      url: ${{ needs.create-test-env.outputs.environment_url }}
+
+    steps:
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy to Test Slot
         uses: azure/webapps-deploy@v3
         with:
           app-name: "educare-webapp"
-          slot-name: "educareintertechnology-pre-deployment"
-          images: "educare.azurecr.io/educare-deployment:${{ needs.publish.outputs.image_tag }}"
+          slot-name: "pr-${{ github.event.pull_request.number }}"
+          images: "educare.azurecr.io/educare-deployment:${{ needs.build-and-test.outputs.image_tag }}"
 
-      - name: Deployment Status
-        if: always()
-        run: |
-          if [ "${{ steps.deploy.outcome }}" == "success" ]; then
-            echo "✅ Deployment successful"
-          else
-            echo "❌ Deployment failed"
-            exit 1
-          fi
+      - name: Comment PR
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const comment = `🚀 Deployment completed!\n\n` +
+                          `Test environment is ready at: ${process.env.ENV_URL}\n\n` +
+                          `Image tag: \`${process.env.IMAGE_TAG}\``;
+
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: comment
+            });
+        env:
+          ENV_URL: ${{ needs.create-test-env.outputs.environment_url }}
+          IMAGE_TAG: ${{ needs.build-and-test.outputs.image_tag }}

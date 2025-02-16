@@ -63,7 +63,7 @@ jobs:
           latest_tag=$(git describe --tags --abbrev=0)
           echo "DEPLOY_VERSION=$latest_tag" >> $GITHUB_ENV
 
-      # Login to Azure with improved error handling
+      # Login to Azure with improved error handling getting from secrets
       - name: Azure Login
         uses: azure/login@v1
         with:

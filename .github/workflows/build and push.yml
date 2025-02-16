@@ -48,6 +48,8 @@ jobs:
 
   create-test-env:
     name: Create Test Environment
+    environment:
+      name: production
     runs-on: ubuntu-latest
     outputs:
       environment_url: ${{ steps.create-env.outputs.url }}

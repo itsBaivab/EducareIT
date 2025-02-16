@@ -44,8 +44,8 @@ jobs:
         uses: azure/docker-login@v1
         with:
           login-server: educare.azurecr.io
-          username: ${{ secrets.ACR_USERNAME }}
-          password: ${{ secrets.ACR_PASSWORD }}
+          username: ${{ env.secrets.ACR_USERNAME }}
+          password: ${{ env.secrets.ACR_PASSWORD }}
 
       # Step 5: Build and push with semantic versioning
       - name: Build and push Docker image

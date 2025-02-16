@@ -2,10 +2,11 @@ name: Deploy to Azure Web App
 
 on:
   workflow_run:
-    workflows: ["Maven Build"] # Must match exactly
+    workflows: ["Build and Push Docker Image"] # Must match exactly
     types:
       - completed
-    branches: [production]
+    branches: 
+      - "production"
 
 permissions:
   actions: read

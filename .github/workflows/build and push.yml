@@ -18,6 +18,9 @@ jobs:
     permissions:
       contents: write # Add permission to write to repository
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    outputs:
+      build_status: ${{ job.status }}
+      image_tag: ${{ env.NEW_VERSION }}
 
     steps:
       # Step 1: Check out the repository with token
@@ -77,3 +80,9 @@ jobs:
         run: |
           git tag ${{ env.NEW_VERSION }}
           git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git ${{ env.NEW_VERSION }}
+
+      - name: Signal Workflow Completion
+        run: |
+          echo "Workflow completed successfully"
+          echo "Image Tag: ${{ env.NEW_VERSION }}"
+        if: success()

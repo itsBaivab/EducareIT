@@ -94,46 +94,31 @@ jobs:
 
           echo "url=https://${SLOT_URL}" >> $GITHUB_OUTPUT
 
-      - name: Configure ACR with App Service
+      - name: Login to ACR in Slot
         run: |
           PR_NUMBER=${{ github.event.pull_request.number }}
           SLOT_NAME="pr-${PR_NUMBER}"
 
-          # Get ACR resource ID
-          ACR_ID=$(az acr show \
-            --name educare \
-            --resource-group rg-deployment-educare \
-            --query id \
-            --output tsv)
+          # Login to ACR
+          az acr login --name educare
 
-          # Assign system-assigned identity to the slot
-          az webapp identity assign \
-            --name educareintertechnology \
-            --resource-group rg-deployment-educare \
-            --slot $SLOT_NAME
+          # Pull the image manually to verify access
+          docker pull educare.azurecr.io/educare-deployment:pr-${PR_NUMBER}
 
-          # Get the slot's managed identity
-          SLOT_IDENTITY=$(az webapp identity show \
-            --name educareintertechnology \
-            --resource-group rg-deployment-educare \
-            --slot $SLOT_NAME \
-            --query principalId \
-            --output tsv)
-
-          # Assign AcrPull role to the slot's managed identity
-          az role assignment create \
-            --assignee $SLOT_IDENTITY \
-            --scope $ACR_ID \
-            --role AcrPull
-
-          # Configure slot to use managed identity for ACR
+          # Configure the slot to use ACR
           az webapp config container set \
             --name educareintertechnology \
             --resource-group rg-deployment-educare \
             --slot $SLOT_NAME \
             --docker-registry-server-url https://educare.azurecr.io \
-            --docker-registry-server-user '' \
-            --docker-registry-server-password ''
+            --docker-registry-server-user ${{ secrets.ACR_USERNAME }} \
+            --docker-registry-server-password ${{ secrets.ACR_PASSWORD }}
+
+          # Restart the slot to apply changes
+          az webapp restart \
+            --name educareintertechnology \
+            --resource-group rg-deployment-educare \
+            --slot $SLOT_NAME
 
   deploy:
     needs: [build-and-test, create-test-env]

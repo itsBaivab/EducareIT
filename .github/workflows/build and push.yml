@@ -173,6 +173,32 @@ jobs:
             exit 1
           fi
 
+      - name: Restart Deployment Slot
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          SLOT_NAME="pr-${PR_NUMBER}"
+
+          echo "Restarting deployment slot..."
+          az webapp restart \
+            --name educareintertechnology \
+            --resource-group rg-deployment-educare \
+            --slot $SLOT_NAME
+
+          # Wait for restart to complete
+          echo "Waiting for slot to be ready after restart..."
+          for i in {1..6}; do
+            if az webapp show \
+              --name educareintertechnology \
+              --resource-group rg-deployment-educare \
+              --slot $SLOT_NAME \
+              --query "state" -o tsv | grep -q "Running"; then
+              echo "✅ Slot restarted successfully"
+              break
+            fi
+            echo "Waiting for slot to be ready... Attempt $i"
+            sleep 10
+          done
+
       - name: Comment PR
         uses: actions/github-script@v7
         with:

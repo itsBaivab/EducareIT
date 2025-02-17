@@ -133,7 +133,7 @@ jobs:
 
           echo "Verifying deployment..."
           DEPLOYMENT_STATUS=$(az webapp show \
-            --name educare \
+            --name educareintertechnology \
             --resource-group rg-deployment-educare \
             --slot $SLOT_NAME \
             --query "state" -o tsv)

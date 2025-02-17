@@ -98,13 +98,13 @@ jobs:
 
           # Create deployment slot if it doesn't exist
           az webapp deployment slot create \
-            --name educare \
+            --name educareintertechnology \
             --resource-group rg-deployment-educare \
             --slot $SLOT_NAME || true
 
           # Get the slot URL
           SLOT_URL=$(az webapp show \
-            --name educare \
+            --name educareintertechnology \
             --resource-group rg-deployment-educare \
             --slot $SLOT_NAME \
             --query "defaultHostName" -o tsv)

@@ -67,16 +67,15 @@ jobs:
 
           echo "Creating deployment slot..."
           az webapp deployment slot create \
-            --name educare \
-            --resource-group educare-rg \
+            --name educareintertechnology \
+            --resource-group rg-deployment-educare \
             --slot $SLOT_NAME \
-            --configuration-source educare
 
           echo "Waiting for slot to be ready..."
           for i in {1..6}; do
             if az webapp show \
-              --name educare \
-              --resource-group educare-rg \
+              --name educareintertechnology \
+              --resource-group rg-deployment-educare \
               --slot $SLOT_NAME \
               --query "state" -o tsv | grep -q "Running"; then
               break
@@ -86,8 +85,8 @@ jobs:
           done
 
           SLOT_URL=$(az webapp show \
-            --name educare \
-            --resource-group educare-rg \
+            --name educareintertechnology \
+            --resource-group rg-deployment-educare \
             --slot $SLOT_NAME \
             --query "defaultHostName" -o tsv)
 
@@ -114,8 +113,8 @@ jobs:
 
           echo "Verifying slot exists..."
           az webapp deployment slot list \
-            --name educare \
-            --resource-group educare-rg \
+            --name educareintertechnology \
+            --resource-group rg-deployment-educare \
             --query "[?name=='$SLOT_NAME']" \
             --output table
 
@@ -123,7 +122,7 @@ jobs:
         id: deploy
         uses: azure/webapps-deploy@v3
         with:
-          app-name: "educare"
+          app-name: "educareintertechnology"
           slot-name: "pr-${{ github.event.pull_request.number }}"
           images: "educare.azurecr.io/educare-deployment:${{ needs.build-and-test.outputs.image_tag }}"
 
@@ -135,7 +134,7 @@ jobs:
           echo "Verifying deployment..."
           DEPLOYMENT_STATUS=$(az webapp show \
             --name educare \
-            --resource-group educare-rg \
+            --resource-group rg-deployment-educare \
             --slot $SLOT_NAME \
             --query "state" -o tsv)
 

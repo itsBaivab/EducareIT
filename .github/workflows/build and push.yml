@@ -94,6 +94,47 @@ jobs:
 
           echo "url=https://${SLOT_URL}" >> $GITHUB_OUTPUT
 
+      - name: Configure ACR with App Service
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          SLOT_NAME="pr-${PR_NUMBER}"
+
+          # Get ACR resource ID
+          ACR_ID=$(az acr show \
+            --name educare \
+            --resource-group rg-deployment-educare \
+            --query id \
+            --output tsv)
+
+          # Assign system-assigned identity to the slot
+          az webapp identity assign \
+            --name educareintertechnology \
+            --resource-group rg-deployment-educare \
+            --slot $SLOT_NAME
+
+          # Get the slot's managed identity
+          SLOT_IDENTITY=$(az webapp identity show \
+            --name educareintertechnology \
+            --resource-group rg-deployment-educare \
+            --slot $SLOT_NAME \
+            --query principalId \
+            --output tsv)
+
+          # Assign AcrPull role to the slot's managed identity
+          az role assignment create \
+            --assignee $SLOT_IDENTITY \
+            --scope $ACR_ID \
+            --role AcrPull
+
+          # Configure slot to use managed identity for ACR
+          az webapp config container set \
+            --name educareintertechnology \
+            --resource-group rg-deployment-educare \
+            --slot $SLOT_NAME \
+            --docker-registry-server-url https://educare.azurecr.io \
+            --docker-registry-server-user '' \
+            --docker-registry-server-password ''
+
   deploy:
     needs: [build-and-test, create-test-env]
     name: Deploy to Test

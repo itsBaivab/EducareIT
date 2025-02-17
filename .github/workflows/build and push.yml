@@ -9,7 +9,8 @@ on:
 permissions:
   actions: read
   contents: read
-  checks: read # Add this permission
+  checks: read
+  pull-requests: write # Only this permission is needed for PR comments
 
 jobs:
   build-and-test:
@@ -46,6 +47,7 @@ jobs:
           tags: educare.azurecr.io/educare-deployment:${{ steps.version.outputs.tag }}
 
   create-test-env:
+    needs: build-and-test
     name: Create Test Environment
     environment:
       name: production
@@ -99,6 +101,8 @@ jobs:
     environment:
       name: production
       url: ${{ needs.create-test-env.outputs.environment_url }}
+    permissions:
+      pull-requests: write # Only this permission is needed at job level
 
     steps:
       - name: Login to Azure
@@ -148,16 +152,20 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const comment = `🚀 Deployment completed!\n\n` +
-                          `Test environment is ready at: ${process.env.ENV_URL}\n\n` +
-                          `Image tag: \`${process.env.IMAGE_TAG}\``;
-
-            github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: comment
-            });
+            try {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: `🚀 Deployment completed!\n\n` +
+                      `Test environment is ready at: ${process.env.ENV_URL}\n\n` +
+                      `Image tag: \`${process.env.IMAGE_TAG}\``
+              });
+              console.log('Successfully posted comment to PR');
+            } catch (error) {
+              console.error('Error posting comment:', error);
+              core.warning('Failed to post comment, but deployment was successful');
+            }
         env:
           ENV_URL: ${{ needs.create-test-env.outputs.environment_url }}
           IMAGE_TAG: ${{ needs.build-and-test.outputs.image_tag }}

@@ -72,35 +72,40 @@ jobs:
           PROD_IMAGE=$(az webapp config container show \
             --name educareintertechnology \
             --resource-group rg-deployment-educare \
-            --slot production \  # Updated to use 'production' slot name
-            --query "imageRegistryCredentials[0].image" -o tsv)
+            --slot production \
+            --query "imageRegistryCredentials[0].image" \
+            --output tsv)
 
           echo "Verifying PR slot..."
           PR_SLOT_IMAGE=$(az webapp config container show \
             --name educareintertechnology \
             --resource-group rg-deployment-educare \
             --slot ${{ needs.get-pr-info.outputs.slot_name }} \
-            --query "imageRegistryCredentials[0].image" -o tsv)
+            --query "imageRegistryCredentials[0].image" \
+            --output tsv)
 
           # Verify production has new image
-          if [[ $PROD_IMAGE != *"pr-${{ needs.get-pr-info.outputs.pr_number }}"* ]]; then
+          if [[ $PROD_IMAGE != *"${{ needs.get-pr-info.outputs.slot_name }}"* ]]; then
             echo "❌ Production slot does not have the correct image!"
-            echo "Expected: pr-${{ needs.get-pr-info.outputs.pr_number }}"
+            echo "Expected image containing: ${{ needs.get-pr-info.outputs.slot_name }}"
             echo "Found: $PROD_IMAGE"
             exit 1
           fi
 
           # Check both slots are running
+          echo "Checking slot status..."
           PROD_STATUS=$(az webapp show \
             --name educareintertechnology \
             --resource-group rg-deployment-educare \
-            --query "state" -o tsv)
+            --query "state" \
+            --output tsv)
 
           PR_SLOT_STATUS=$(az webapp show \
             --name educareintertechnology \
             --resource-group rg-deployment-educare \
             --slot ${{ needs.get-pr-info.outputs.slot_name }} \
-            --query "state" -o tsv)
+            --query "state" \
+            --output tsv)
 
           if [ "$PROD_STATUS" != "Running" ] || [ "$PR_SLOT_STATUS" != "Running" ]; then
             echo "❌ One or more slots not running properly!"

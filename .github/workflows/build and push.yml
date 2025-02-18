@@ -47,7 +47,7 @@ jobs:
           tags: educare.azurecr.io/educare-deployment:${{ steps.version.outputs.tag }}
 
   create-test-env:
-    needs: build-and-test
+    # needs: build-and-test
     name: Create Test Environment
     environment:
       name: production
@@ -60,6 +60,12 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Generate PR Version Tag
+        id: version
+        run: |
+          PR_NUMBER=${{ github.event.pull_request.number }}
+          echo "tag=pr-${PR_NUMBER}" >> $GITHUB_OUTPUT
 
       - name: Create Test Environment
         id: create-env

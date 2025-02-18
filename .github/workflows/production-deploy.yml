@@ -1,0 +1,105 @@
+name: Production Deployment
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  get-pr-info:
+    runs-on: ubuntu-latest
+    outputs:
+      pr_number: ${{ steps.pr-number.outputs.number }}
+      slot_name: ${{ steps.pr-number.outputs.slot_name }}
+    steps:
+      - name: Get PR number from commit
+        id: pr-number
+        run: |
+          PR_NUMBER=$(git log -1 --pretty=%B | grep -oP '#\K\d+' || echo "")
+          if [ -z "$PR_NUMBER" ]; then
+            echo "Error: No PR number found in commit message"
+            exit 1
+          fi
+          echo "number=${PR_NUMBER}" >> $GITHUB_OUTPUT
+          echo "slot_name=pr-${PR_NUMBER}" >> $GITHUB_OUTPUT
+
+  wait-for-approval:
+    needs: get-pr-info
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://educareintertechnology-${{ needs.get-pr-info.outputs.slot_name }}.azurewebsites.net
+    steps:
+      - name: Approval gate
+        run: echo "Waiting for approval to swap slot ${{ needs.get-pr-info.outputs.slot_name }} to production..."
+
+  swap-to-production:
+    needs: [get-pr-info, wait-for-approval]
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Swap Slots
+        run: |
+          az webapp deployment slot swap \
+            --name educareintertechnology \
+            --resource-group rg-deployment-educare \
+            --slot ${{ needs.get-pr-info.outputs.slot_name }} \
+            --target-slot production
+
+      - name: Verify Slot Swap
+        run: |
+          echo "Verifying production slot..."
+          PROD_IMAGE=$(az webapp config container show \
+            --name educareintertechnology \
+            --resource-group rg-deployment-educare \
+            --slot production \  # Updated to use 'production' slot name
+            --query "imageRegistryCredentials[0].image" -o tsv)
+
+          echo "Verifying PR slot..."
+          PR_SLOT_IMAGE=$(az webapp config container show \
+            --name educareintertechnology \
+            --resource-group rg-deployment-educare \
+            --slot ${{ needs.get-pr-info.outputs.slot_name }} \
+            --query "imageRegistryCredentials[0].image" -o tsv)
+
+          # Verify production has new image
+          if [[ $PROD_IMAGE != *"pr-${{ needs.get-pr-info.outputs.pr_number }}"* ]]; then
+            echo "❌ Production slot does not have the correct image!"
+            echo "Expected: pr-${{ needs.get-pr-info.outputs.pr_number }}"
+            echo "Found: $PROD_IMAGE"
+            exit 1
+          fi
+
+          # Check both slots are running
+          PROD_STATUS=$(az webapp show \
+            --name educareintertechnology \
+            --resource-group rg-deployment-educare \
+            --query "state" -o tsv)
+
+          PR_SLOT_STATUS=$(az webapp show \
+            --name educareintertechnology \
+            --resource-group rg-deployment-educare \
+            --slot ${{ needs.get-pr-info.outputs.slot_name }} \
+            --query "state" -o tsv)
+
+          if [ "$PROD_STATUS" != "Running" ] || [ "$PR_SLOT_STATUS" != "Running" ]; then
+            echo "❌ One or more slots not running properly!"
+            echo "Production status: $PROD_STATUS"
+            echo "PR slot status: $PR_SLOT_STATUS"
+            exit 1
+          fi
+
+          echo "✅ Slot swap verification completed successfully!"
+
+      - name: Delete PR Slot
+        if: success()
+        run: |
+          az webapp deployment slot delete \
+            --name educareintertechnology \
+            --resource-group rg-deployment-educare \
+            --slot ${{ needs.get-pr-info.outputs.slot_name }}

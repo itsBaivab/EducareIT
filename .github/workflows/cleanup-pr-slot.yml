@@ -10,6 +10,8 @@ jobs:
   cleanup:
     if: github.event.pull_request.merged == false # Only run if PR was closed without merging
     runs-on: ubuntu-latest
+    environment:
+      name: production
     steps:
       - name: Login to Azure
         uses: azure/login@v1

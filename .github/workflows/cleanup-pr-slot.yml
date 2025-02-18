@@ -1,0 +1,42 @@
+name: Cleanup PR Environment
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - production
+
+jobs:
+  cleanup:
+    if: github.event.pull_request.merged == false # Only run if PR was closed without merging
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+    steps:
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Delete PR Slot
+        id: delete-slot
+        run: |
+          SLOT_NAME="pr-${{ github.event.pull_request.number }}"
+          echo "Deleting slot: $SLOT_NAME"
+
+          az webapp deployment slot delete \
+            --name educareintertechnology \
+            --resource-group rg-deployment-educare \
+            --slot $SLOT_NAME \
+            || echo "Slot not found or already deleted"
+
+      - name: Add PR Comment
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: '🧹 Staging environment has been successfully destroyed.'
+            });

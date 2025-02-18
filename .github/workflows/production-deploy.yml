@@ -9,19 +9,34 @@ jobs:
   get-pr-info:
     runs-on: ubuntu-latest
     outputs:
-      pr_number: ${{ steps.pr-number.outputs.number }}
-      slot_name: ${{ steps.pr-number.outputs.slot_name }}
+      pr_number: ${{ steps.get-merged-pr.outputs.number }}
+      slot_name: ${{ steps.get-merged-pr.outputs.slot_name }}
     steps:
-      - name: Get PR number from commit
-        id: pr-number
-        run: |
-          PR_NUMBER=$(git log -1 --pretty=%B | grep -oP '#\K\d+' || echo "")
-          if [ -z "$PR_NUMBER" ]; then
-            echo "Error: No PR number found in commit message"
-            exit 1
-          fi
-          echo "number=${PR_NUMBER}" >> $GITHUB_OUTPUT
-          echo "slot_name=pr-${PR_NUMBER}" >> $GITHUB_OUTPUT
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get PR number from merge commit
+        id: get-merged-pr
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const commit = context.sha;
+            const { data: commits } = await github.rest.repos.listPullRequestsAssociatedWithCommit({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              commit_sha: commit
+            });
+
+            if (commits.length === 0) {
+              core.setFailed('No PR found associated with this merge commit');
+              return;
+            }
+
+            const prNumber = commits[0].number;
+            core.setOutput('number', prNumber);
+            core.setOutput('slot_name', `pr-${prNumber}`);
+            console.log(`Found PR #${prNumber} associated with merge commit ${commit}`);
 
   wait-for-approval:
     needs: get-pr-info

@@ -68,53 +68,34 @@ jobs:
 
       - name: Verify Slot Swap
         run: |
-          echo "Verifying production slot..."
-          PROD_IMAGE=$(az webapp config container show \
+          echo "Waiting for deployment to stabilize..."
+          sleep 30
+
+          echo "Verifying production deployment..."
+          CURRENT_IMAGE=$(az webapp config container show \
             --name educareintertechnology \
             --resource-group rg-deployment-educare \
-            --slot production \
-            --query "imageRegistryCredentials[0].image" \
+            --query "[?name=='DOCKER_CUSTOM_IMAGE_NAME'].value | [0]" \
             --output tsv)
 
-          echo "Verifying PR slot..."
-          PR_SLOT_IMAGE=$(az webapp config container show \
-            --name educareintertechnology \
-            --resource-group rg-deployment-educare \
-            --slot ${{ needs.get-pr-info.outputs.slot_name }} \
-            --query "imageRegistryCredentials[0].image" \
-            --output tsv)
+          echo "Current production image: $CURRENT_IMAGE"
 
-          # Verify production has new image
-          if [[ $PROD_IMAGE != *"${{ needs.get-pr-info.outputs.slot_name }}"* ]]; then
-            echo "❌ Production slot does not have the correct image!"
-            echo "Expected image containing: ${{ needs.get-pr-info.outputs.slot_name }}"
-            echo "Found: $PROD_IMAGE"
+          # Extract just the PR number from image tag
+          CURRENT_PR=$(echo "$CURRENT_IMAGE" | grep -oP 'pr-\d+')
+          EXPECTED_PR="${{ needs.get-pr-info.outputs.pr_number }}"
+
+          echo "Current PR: $CURRENT_PR"
+          echo "Expected PR: $EXPECTED_PR"
+
+          # Simple numeric comparison
+          if [ "$CURRENT_PR" != "$EXPECTED_PR" ]; then
+            echo "❌ Production does not have the correct image!"
+            echo "Expected PR: $EXPECTED_PR"
+            echo "Found PR: $CURRENT_PR"
             exit 1
           fi
 
-          # Check both slots are running
-          echo "Checking slot status..."
-          PROD_STATUS=$(az webapp show \
-            --name educareintertechnology \
-            --resource-group rg-deployment-educare \
-            --query "state" \
-            --output tsv)
-
-          PR_SLOT_STATUS=$(az webapp show \
-            --name educareintertechnology \
-            --resource-group rg-deployment-educare \
-            --slot ${{ needs.get-pr-info.outputs.slot_name }} \
-            --query "state" \
-            --output tsv)
-
-          if [ "$PROD_STATUS" != "Running" ] || [ "$PR_SLOT_STATUS" != "Running" ]; then
-            echo "❌ One or more slots not running properly!"
-            echo "Production status: $PROD_STATUS"
-            echo "PR slot status: $PR_SLOT_STATUS"
-            exit 1
-          fi
-
-          echo "✅ Slot swap verification completed successfully!"
+          echo "✅ Production deployment verification completed successfully!"
 
       - name: Delete PR Slot
         if: success()

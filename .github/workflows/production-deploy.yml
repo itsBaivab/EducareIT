@@ -88,7 +88,7 @@ jobs:
           echo "Expected PR: $EXPECTED_PR"
 
           # Simple numeric comparison
-          if [ "$CURRENT_PR" != "$EXPECTED_PR" ]; then
+          if [ "$CURRENT_PR" != "pr-$EXPECTED_PR" ]; then
             echo "❌ Production does not have the correct image!"
             echo "Expected PR: $EXPECTED_PR"
             echo "Found PR: $CURRENT_PR"

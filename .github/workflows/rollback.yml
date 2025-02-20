@@ -1,0 +1,87 @@
+name: Production Rollback
+
+on:
+  workflow_dispatch:
+
+env:
+  CONTAINER_REGISTRY: educareit.azurecr.io
+  IMAGE_NAME: educare-webapp
+  RESOURCE_GROUP: rg-deploymenteducare
+  ENVIRONMENT: production
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Get current and previous image tags
+        run: |
+          CURRENT_IMAGE=$(az webapp config container show \
+            --name educareintertechnology \
+            --resource-group rg-deployment-educare \
+            --query "[?name=='DOCKER_CUSTOM_IMAGE_NAME'].value | [0]" \
+            --output tsv)
+
+          current_tag=$(echo $current_image | cut -d':' -f2)
+          previous_tag=$((current_tag - 1))
+
+          echo "Current image tag: $current_tag"
+          echo "Rolling back to tag: $previous_tag"
+
+          echo "PREVIOUS_TAG=$previous_tag" >> $GITHUB_ENV
+          echo "CURRENT_TAG=$current_tag" >> $GITHUB_ENV
+
+  rollback:
+    needs: validate
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Perform rollback
+        run: |
+          az webapp config container set \
+            --name educare-production \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --docker-custom-image-name "${{ env.CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.PREVIOUS_TAG }}"
+
+      - name: Verify rollback
+        run: |
+          new_image=$(az webapp config container show \
+            --name educare-production \
+            --resource-group ${{ env.RESOURCE_GROUP }} \
+            --query "[currentImage]" -o tsv)
+          expected_image="${{ env.CONTAINER_REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.PREVIOUS_TAG }}"
+          if [[ "$new_image" != "$expected_image" ]]; then
+            echo "Rollback verification failed!"
+            exit 1
+          fi
+
+  notify:
+    needs: rollback
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create GitHub issue for tracking
+        uses: actions/github-script@v6
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: 'Production Rollback Performed',
+              body: `
+                Rollback Details:
+                - From version: ${{ env.CURRENT_TAG }}
+                - To version: ${{ env.PREVIOUS_TAG }}
+                - Performed by: ${context.actor}
+                - Date: ${new Date().toISOString()}
+              `
+            });

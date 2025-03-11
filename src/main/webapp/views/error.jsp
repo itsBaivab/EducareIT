@@ -26,7 +26,7 @@
     </style>
 </head>
 <body>
-    <h1>Oops! Something went wrong.</h1>
+    <h1>Oops! Something went wrong.  Plasae try again.</h1>
     <p>We encountered an error while processing your request.</p>
     <p>Please try again later or <a href="/contact">contact us</a> if the issue persists.</p>
     <a href="/">Go to Home Page</a>

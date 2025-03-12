@@ -165,6 +165,8 @@ public String saveUserRegistration(@ModelAttribute("user") User user, Model mode
         try {
             SimpleMailMessage mailMessage = new SimpleMailMessage();
             mailMessage.setTo("info@educareinterntechnology.in");
+            mailMessage.setTo("educareintern.technology@gmail.com");
+
             mailMessage.setSubject("New Contact Form Submission from " + name);
             mailMessage.setText("Name: " + name + "\nEmail: " + email + "\nMessage: " + message);
 

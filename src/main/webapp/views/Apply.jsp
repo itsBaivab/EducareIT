@@ -198,6 +198,16 @@ header {
                 </select>
             </div>
             <div class="form-group">
+                <label for="duration">Internship Duration:</label>
+                <select id="duration" name="duration" required>
+                    <option value="" disabled selected>Select a your preferred duration</option>
+                    <option value="one-months">One Months</option>
+                    <option value="three-months">Three Months</option>
+                    <option value="six-months">Six Months</option>
+                </select>
+            </div>
+
+            <div class="form-group">
                 <button type="submit">Apply Now</button>
             </div>
         </form>

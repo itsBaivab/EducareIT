@@ -22,6 +22,8 @@ public class User {
     private String mobile;
     @Column
     private String domain;
+    @Column
+    private String duration;
 
     public String getName() {
         return name;
@@ -53,4 +55,11 @@ public class User {
     public void setDomain(String domain) {
         this.domain = domain;
     }
+    public String getDuration() {
+        return duration;
+    }
+    public void setDuration(String duration) {
+        this.duration = duration;
+    }
+
 }
